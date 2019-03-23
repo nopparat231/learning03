@@ -19,158 +19,112 @@ $Userlevel = "M";
 $Status = "N";
 $session_id = session_id();
 
-
+$check = "SELECT Username FROM user WHERE Username = '$Username'";
+$result = mysqli_query($con,$check);
+$num = mysqli_num_rows($result);
 
 $checkemail = "SELECT email FROM user WHERE email = '$email'";
 $resultemail = mysqli_query($con,$checkemail);
 $numemail = mysqli_num_rows($resultemail);
 
-$check = "SELECT Username FROM user WHERE Username = '$Username'";
-$result = mysqli_query($con,$check);
-$num = mysqli_num_rows($result);
-
-if ($numemail > 0 ){ ?>
-
-	<script type="text/javascript">
-
-		var $ws = 'index.php';
-
-		setTimeout(function () { 
-			swal({
-				title: "E-mail นี้มีผู้ใช้แล้ว กรุณาลองใหม่อีกครั้ง",
-
-				type: "error",
-
-				confirmButtonText: "ลองใหม่อีกครั้ง"
-			},
-			function(isConfirm){
-				if (isConfirm) {
-					window.location.href = $ws;
-				}
-			}); }, 50);
-		</script>
-
-	<?php }elseif ($num > 0 ){ ?>
-
-		<script type="text/javascript">
-
-			var $ws = 'index.php';
-
-			setTimeout(function () { 
-				swal({
-					title: "ชื่อผู้ใช้นี้มีผู้ใช้แล้ว กรุณาลองใหม่อีกครั้ง",
-
-					type: "error",
-
-					confirmButtonText: "ลองใหม่อีกครั้ง"
-				},
-				function(isConfirm){
-					if (isConfirm) {
-						window.location.href = $ws;
-					}
-				}); }, 50);
-			</script>
-
-		<?php }else{
-	//เพิ่มเข้าไปในฐานข้อมูล
-			$sql = "INSERT INTO user(Firstname, Lastname, Username, Password, email ,phone , Userlevel , session_id ,  Status)
-			VALUES('$Firstname', '$Lastname', '$Username', '$Password', '$email' , '$phone' , '$Userlevel'  , '$session_id', '$Status')";
-
-			$result1 = mysqli_query($con, $sql) or die ("Error in query: $sql " . mysqli_error());
-			$ID = mysqli_insert_id($con) or die ("Error in query: $sql " . mysqli_error());
-			$ma = "http://sharelearningmedia.com/register_db_active.php?sid=".$session_id."&ID=".$ID."<br>";
-     $massage = "<h3> กรุณากดลิ้งค์ เพื่อยืนยันการสมัคร </h3><br>".$ma;
-
-}
-     if($result1){
-
-       ini_set( 'display_errors', 1 );
-       error_reporting( E_ALL );
-       $from = "sharelea@sharelearningmedia.com";
-       $to = $email;
-       $subject = "ยืนยันการสมัครสมาชิกดเว็บ sharelearningmedia.com";
-       $message = $massage;
-       $headers = "From:" . $from . "\r\n";
-       $headers .= "Content-Type: text/html; charset=utf-8\r\n";
-       $mailsend = mail($to,$subject,$message, $headers);
-
-       if($mailsend){
-         ?>
-
-         <script type="text/javascript">
-
-           var $ws = 'index.php';
-
-           setTimeout(function () { 
-             swal({
-               title: "สมัครสมาชิกสำเร็จ กรุณายืนยันที่ E-mail ที่ท่านสมัคร",
-
-               type: "success",
-
-               confirmButtonText: "ยืนยัน"
-             },
-             function(isConfirm){
-               if (isConfirm) {
-                 window.location.href = $ws;
-               }
-             }); }, 50);
-
-           </script>
 
 
-         <?php }else{ ?>
+if ($num > 0 ){ ?>
+
+  <script type="text/javascript">
+
+   var $ws = 'index.php?register';
+
+   setTimeout(function () { 
+    swal({
+     title: "ชื่อผู้ใช้นี้มีผู้ใช้แล้ว กรุณาลองใหม่อีกครั้ง",
+
+     type: "error",
+
+     confirmButtonText: "ลองใหม่อีกครั้ง"
+   },
+   function(isConfirm){
+     if (isConfirm) {
+      window.location.href = $ws;
+    }
+  }); }, 50);
+</script>
+
+<?php }elseif ($numemail > 0 ){ ?>
+
+  <script type="text/javascript">
+    var $ws = 'index.php?register';
+    setTimeout(function () { 
+      swal({
+        title: "E-mail นี้มีผู้ใช้แล้ว กรุณาลองใหม่อีกครั้ง",
+        type: "error",
+        confirmButtonText: "ลองใหม่อีกครั้ง"
+      },
+      function(isConfirm){
+        if (isConfirm) {
+          window.location.href = $ws;
+        }
+      }); }, 50);
+    </script>
+
+  <?php }elseif($numemail == 0 && $num == 0){
+
+    $sql = "INSERT INTO user(Firstname, Lastname, Username, Password, email ,phone , Userlevel , session_id ,  Status)
+    VALUES('$Firstname', '$Lastname', '$Username', '$Password', '$email' , '$phone' , '$Userlevel'  , '$session_id', '$Status')";
+    $result1 = mysqli_query($con, $sql) or die ("Error in query: $sql " . mysqli_error());
+    $ID = mysqli_insert_id($con) or die ("Error in query: $sql " . mysqli_error());
+    $ma = "http://sharelearningmedia.com/register_db_active.php?sid=".$session_id."&ID=".$ID."<br>";
+    $massage = "<h3> กรุณากดลิ้งค์ เพื่อยืนยันการสมัคร </h3><br>".$ma;
+
+    if ($result1) {
+      ini_set( 'display_errors', 1 );
+      error_reporting( E_ALL );
+      $from = "sharelea@sharelearningmedia.com";
+      $to = $email;
+      $subject = "ยืนยันการสมัครสมาชิกดเว็บ sharelearningmedia.com";
+      $message = $massage;
+      $headers = "From:" . $from . "\r\n";
+      $headers .= "Content-Type: text/html; charset=utf-8\r\n";
+      $mailsend = mail($to,$subject,$message, $headers);
+
+      if($mailsend){ ?>
+
+       <script type="text/javascript">
+         var $ws = 'index.php';
+         setTimeout(function () { 
+           swal({
+             title: "สมัครสมาชิกสำเร็จ กรุณายืนยันที่ E-mail ที่ท่านสมัคร",
+             type: "success",
+             confirmButtonText: "ยืนยัน"
+           },
+           function(isConfirm){
+             if (isConfirm) {
+               window.location.href = $ws;
+             }
+           }); }, 50);
+         </script>
 
 
+       <?php }else{ ?>
 
-          <script type="text/javascript">
+        <script type="text/javascript">
+          var $ws = 'index.php';
+          setTimeout(function () { 
+            swal({
+              title: "ส่งเมล์ไม่สำเร็จ",
+              type: "error",
+              confirmButtonText: "ลองใหม่อีกครั้ง"
+            },
+            function(isConfirm){
+              if (isConfirm) {
+                window.location.href = $ws;
+              }
+            }); }, 50);
+          </script>
+          <?php
+        }//เช็คส่งเมล์
 
-            var $ws = 'index.php';
+      }//เช็คบันทึกไม่สำเร็จ
 
-            setTimeout(function () { 
-              swal({
-                title: "ส่งเมล์ไม่สำเร็จ",
-
-                type: "error",
-
-                confirmButtonText: "ลองใหม่อีกครั้ง"
-              },
-              function(isConfirm){
-                if (isConfirm) {
-                  window.location.href = $ws;
-                }
-              }); }, 50);
-
-            </script>
-
-
-          <?php }
-
-        }else{ ?>
-         <script type="text/javascript">
-
-           var $ws = 'index.php';
-
-           setTimeout(function () { 
-             swal({
-               title: "สมัครสมาชิกไม่สำเร็จ",
-
-               type: "error",
-
-               confirmButtonText: "ลองใหม่อีกครั้ง"
-             },
-             function(isConfirm){
-               if (isConfirm) {
-                 window.location.href = $ws;
-               }
-             }); }, 50);
-
-           </script>
-         <?php }?>
-
-
-         
-         <?php mysqli_close($con); ?>
-
-
-         
+    }//เช็ค User E-mail ซ้ำ ?>
 
