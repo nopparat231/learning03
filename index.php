@@ -1,3 +1,10 @@
+<?php
+if(session_status() == PHP_SESSION_NONE){
+    //session has not started
+  session_start();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +12,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Material Design Bootstrap</title>
+  <title>สื่อการเรียนรู้</title>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
   <!-- Bootstrap core CSS -->
@@ -28,50 +35,70 @@
 
 
      <!--Grid row-->
-        <div class="row d-flex justify-content-center">
+     <div class="row d-flex justify-content-center">
 
-          <!--Grid column-->
-          <div class="col-md-12">
+      <!--Grid column-->
+      <div class="col-md-12">
 
 
-     <?php
-     $regis = isset($_GET['register']);
+       <?php
+       $regis = isset($_GET['register']);
+       $learning = isset($_GET['learning']);
 
-     if ($regis <> ''): ?>
+       if ($learning <> ''): ?>
 
-      
-        <?php include 'register.php'; ?>
-     
-      <?php else: ?>
-   
+        <?php include 'index1.php'; ?>
+
+        <?php elseif ($regis <> ''): ?>
+
+          <?php include 'register.php'; ?>
+
+          <?php else: ?>
+
             <!-- Video -->
             <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
               <iframe class="embed-responsive-item" src="https://www.youtube.com/watch?v=EErY75MXYXI" allowfullscreen></iframe>
             </div>
 
-      <?php endif ?>
-
-          </div>
-          <!--Grid column-->
+          <?php endif ?>
 
         </div>
-        <!--Grid row-->
-      <?php include 'footer.php'; ?>
+        <!--Grid column-->
 
+      </div>
+      <!--Grid row-->
+      <?php
+      if ($learning <> ''): ?>
 
+        <?php include 'footer.php'; ?>
+        <?php else: ?>
+
+          <!-- footer -->
+          <footer class="page-footer font-small default-color" >
+
+            <!-- Copyright -->
+            <div class="footer-copyright text-center py-3 ">
+              © 2019 Copyright: RMUTK 
+
+            </div>
+            <!-- Copyright -->
+
+          </footer>
+        <?php endif ?>
+
+      </div>
     </div>
   </div>
-</div>
 
-<!-- SCRIPTS -->
-<!-- JQuery -->
-<script type="text/javascript" src="MDBcss/js/jquery-3.3.1.min.js"></script>
-<!-- Bootstrap tooltips -->
-<script type="text/javascript" src="MDBcss/js/popper.min.js"></script>
-<!-- Bootstrap core JavaScript -->
-<script type="text/javascript" src="MDBcss/js/bootstrap.min.js"></script>
-<!-- MDB core JavaScript -->
-<script type="text/javascript" src="MDBcss/js/mdb.min.js"></script>
+  <!-- SCRIPTS -->
+  <!-- JQuery -->
+  <script type="text/javascript" src="MDBcss/js/jquery-3.3.1.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="MDBcss/js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="MDBcss/js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="MDBcss/js/mdb.min.js"></script>
 </body>
 
 </html>

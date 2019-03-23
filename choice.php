@@ -2,76 +2,86 @@
 <html>
 
 <head>
+
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="https://static.pingendo.com/bootstrap/bootstrap-4.1.3.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>สื่อการเรียนรู้</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="MDBcss/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="MDBcss/css/mdb.min.css" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="MDBcss/css/style.css" rel="stylesheet">
+</head>
 
-  <style>
-    /* The container */
-    .container {
-      display: block;
-      position: relative;
-      padding-left: 35px;
-      margin-bottom: 12px;
-      cursor: pointer;
-      font-size: 15px;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
+<style>
+  /* The container */
+  .container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 15px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
 
-    /* Hide the browser's default radio button */
-    .container input {
-      position: absolute;
-      opacity: 0;
-      cursor: pointer;
-    }
+  /* Hide the browser's default radio button */
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
 
-    /* Create a custom radio button */
-    .checkmark {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 25px;
-      width: 25px;
-      background-color: #eee;
-      border-radius: 50%;
-    }
+  /* Create a custom radio button */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+  }
 
-    /* On mouse-over, add a grey background color */
-    .container:hover input ~ .checkmark {
-      background-color: #ccc;
-    }
+  /* On mouse-over, add a grey background color */
+  .container:hover input ~ .checkmark {
+    background-color: #E5DBFF;
+  }
 
-    /* When the radio button is checked, add a blue background */
-    .container input:checked ~ .checkmark {
-      background-color: #2196F3;
-    }
+  /* When the radio button is checked, add a blue background */
+  .container input:checked ~ .checkmark {
+    background-color: #AD8CFF;
+  }
 
-    /* Create the indicator (the dot/circle - hidden when not checked) */
-    .checkmark:after {
-      content: "";
-      position: absolute;
-      display: none;
-    }
+  /* Create the indicator (the dot/circle - hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
 
-    /* Show the indicator (dot/circle) when checked */
-    .container input:checked ~ .checkmark:after {
-      display: block;
-    }
+  /* Show the indicator (dot/circle) when checked */
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
 
-    /* Style the indicator (dot/circle) */
-    .container .checkmark:after {
-      top: 9px;
-      left: 9px;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: white;
-    }
-  </style>
+  /* Style the indicator (dot/circle) */
+  .container .checkmark:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+  }
+</style>
 
 
 </head>
@@ -93,26 +103,30 @@ $resultN=mysqli_fetch_array($db_queryN);
 
 ?>
 
-<body>
-  <?php include 'navbar.php'; ?>
-  <?php //include 'banner.php'; ?>
-  <div class="container">
+<body style="background-color: #FFF7F7">
+ <div class="container">
 
-    <div class="py-2">
+
+
+   <?php include 'navbar.php'; ?>
+   <div class="col-md-12" style="background-color: #FFFEF0" >
+     <div class="py-2">
       <div class="container">
         <div class="row">
-          <div class="col-md-12">
-            <h1 class="text-center"><b>
+          <div class="col-md-12" >
+            <h1 class="text-center">
+              <b>
 
-              <?php if (isset($_GET['bff'])){ ?>
-                แบบทดสอบก่อนเรียน <?php echo $resultN['choice_name']; ?>
-              <?php }elseif(isset($_GET['aff'])){ ?>
-                แบบทดสอบหลังเรียน <?php echo $resultN['choice_name']; ?>
-              <?php }elseif (isset($_GET['af'])) { ?>
-                เฉลยแบบทดสอบ <?php echo $resultN['choice_name']; ?>
-              <?php } ?>
-
-            </b></h1>
+                <?php if (isset($_GET['bff'])){ ?>
+                  แบบทดสอบก่อนเรียน <?php echo $resultN['choice_name']; ?>
+                <?php }elseif(isset($_GET['aff'])){ ?>
+                  แบบทดสอบหลังเรียน <?php echo $resultN['choice_name']; ?>
+                <?php }elseif (isset($_GET['af'])) { ?>
+                  เฉลยแบบทดสอบ <?php echo $resultN['choice_name']; ?>
+                <?php } ?>
+                <hr>
+              </b>
+            </h1>
           </div>
         </div>
       </div>
@@ -169,7 +183,7 @@ $resultN=mysqli_fetch_array($db_queryN);
             <input type="radio" name="c<?php echo $i;?>" value="4">
             <span class="checkmark"></span></h5>
           </label>
-          
+
           <input name="answer<?php echo $i;?>" type="hidden" value="<?php echo $result['answer'];?>">
         </ol>
 
@@ -333,8 +347,22 @@ function bf(){
     <?php } ?>
 
 
-  </div>
-  <?php include 'footer.php'; ?>
+</div>
+</div>
+    <!-- footer -->
+    <footer class="page-footer font-small default-color" >
+
+      <!-- Copyright -->
+      <div class="footer-copyright text-center py-3 ">
+        © 2019 Copyright: RMUTK 
+
+      </div>
+      <!-- Copyright -->
+
+    </footer>
+  
+
+
 
 </body>
 

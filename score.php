@@ -3,12 +3,20 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="https://static.pingendo.com/bootstrap/bootstrap-4.1.3.css">
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>สื่อการเรียนรู้</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="MDBcss/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="MDBcss/css/mdb.min.css" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="MDBcss/css/style.css" rel="stylesheet">
 </head>
-<?php include 'navbar.php'; ?>
+
 <?php include 'conn.php'; ?>
 <?php 
 
@@ -23,7 +31,9 @@ $totalRows_learning = mysqli_num_rows($learning);
 ?>
 
 
-<body>
+<body style="background-color: #FFF7F7">
+ <div class="container">
+<?php include 'navbar.php'; ?>
 
  <div class="py-2">
   <div class="container">
@@ -85,14 +95,9 @@ $totalRows_learning = mysqli_num_rows($learning);
   </div>
 </div>
 </div>
-<div class="py-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12"></div>
-    </div>
-  </div>
-</div>
 <?php include 'footer.php'; ?>
+
+</div>
 </body>
 
 </html>
