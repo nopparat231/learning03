@@ -7,11 +7,6 @@ $a = 1;
 while($result=mysqli_fetch_array($db_query))
 {
 
-
-
-
-
-
   for ($i=1; $i < 20; $i++) { 
 
     if ($_GET["id$i"] == $result['id'] ) {
