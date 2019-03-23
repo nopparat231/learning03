@@ -3,13 +3,16 @@
 
 <?php
 $a = 1;
+
 while($result=mysqli_fetch_array($db_query))
 {
 
 
 
-  $line = $_GET['line']+1;
-  for ($i=1; $i < $line; $i++) { 
+
+
+
+  for ($i=1; $i < 20; $i++) { 
 
     if ($_GET["id$i"] == $result['id'] ) {
      $an = $_GET["answer$i"];
@@ -23,7 +26,10 @@ while($result=mysqli_fetch_array($db_query))
      ?>
 
      <h3>
-      <?php  echo "เฉลย ".$an; ?>
+      <?php if ($_GET["c$i"] == $_GET["answer$i"]): ?>
+        <?php  echo "<u>เฉลย</u>  ".$an; ?>
+      <?php endif ?>
+      
 
     </h3>
 
@@ -38,9 +44,8 @@ while($result=mysqli_fetch_array($db_query))
   }
 
 }
-$a+=1;
+$a++;
 }
 
 
 ?>
-

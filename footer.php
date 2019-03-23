@@ -2,7 +2,7 @@
 .footer {
    position: fixed;
    bottom: 0;
-   width: 82%;
+   width: 70%;
    color: white;
    text-align: center;
 }

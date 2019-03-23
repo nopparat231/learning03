@@ -20,7 +20,7 @@ $totalRows_testing = mysqli_num_rows($testing);
 <div class="py-2">
   <div class="container" >
     <div class="row" >
-      <div class="col-md-12">
+      <div class="col-md-12" style="background-color: #FFFEF0">
         <h1 class="mb-3 text-center">สื่อการเรียนรู้</h1>
         <hr>
         <ul class="list-group list-group-flush text-center">
@@ -51,7 +51,7 @@ $totalRows_testing = mysqli_num_rows($testing);
                 <li class="list-group">
                   <h3>
                     
-                    <?php echo $row_choice['choice_name']; ?> <b style="color: red"> <font size="3">ทำแบบทดสอบแล้ว</font></b>
+                    <a href="watch.php?choice_id=<?php echo $row_choice['choice_id'];?>&user_id=<?php echo $_SESSION['UserID'];?>&aff=aff&cff"><?php echo $row_choice['choice_name']; ?></a> <b style="color: red"> <font size="3">ทำแบบทดสอบแล้ว</font></b>
                   </h3>
                 </li>
 

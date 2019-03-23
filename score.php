@@ -32,9 +32,10 @@ $totalRows_learning = mysqli_num_rows($learning);
 
 
 <body style="background-color: #FFF7F7">
- <div class="container">
+ <div class="container" >
+  
 <?php include 'navbar.php'; ?>
-
+<div class="col-md-12" style="background-color: #FFFEF0">
  <div class="py-2">
   <div class="container">
     <div class="row">
@@ -44,6 +45,7 @@ $totalRows_learning = mysqli_num_rows($learning);
     </div>
   </div>
 </div>
+<hr>
 <div class="py-3">
   <div class="container">
     <div class="row">
@@ -96,7 +98,7 @@ $totalRows_learning = mysqli_num_rows($learning);
 </div>
 </div>
 <?php include 'footer.php'; ?>
-
+</div>
 </div>
 </body>
 
