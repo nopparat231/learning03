@@ -73,7 +73,7 @@ if ($num > 0 ){ ?>
     VALUES('$Firstname', '$Lastname', '$Username', '$Password', '$email' , '$phone' , '$Userlevel'  , '$session_id', '$Status')";
     $result1 = mysqli_query($con, $sql) or die ("Error in query: $sql " . mysqli_error());
     $ID = mysqli_insert_id($con) or die ("Error in query: $sql " . mysqli_error());
-    $ma = "http://sharelearningmedia.com/register_db_active.php?sid=".$session_id."&ID=".$ID."<br>";
+    $ma = "http://http://medialearning.ga/register_db_active.php?sid=".$session_id."&ID=".$ID."<br>";
     $massage = "<h3> กรุณากดลิ้งค์ เพื่อยืนยันการสมัคร </h3><br>".$ma;
 
     if ($result1) {
