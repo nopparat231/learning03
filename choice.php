@@ -104,12 +104,16 @@ $resultN=mysqli_fetch_array($db_queryN);
 ?>
 
 <body style="background-color: #FFF7F7">
- <div class="container">
+
+  <div  class="container" >
+     <?php include 'navbar.php'; ?>
+<div class="col-md-12" style="background-color: #FFFEF0">
+  
+   
 
 
+   
 
-   <?php include 'navbar.php'; ?>
-   <div class="col-md-12" style="background-color: #FFFEF0" >
      <div class="py-2">
       <div class="container">
         <div class="row">
@@ -165,22 +169,22 @@ $resultN=mysqli_fetch_array($db_queryN);
                 <ol>
 
                   <label class="container"><h5><?php echo $result["c1"];?>
-                  <input type="radio" name="c<?php echo $i;?>" value="1" required >
+                  <input type="radio" class="form-check-input" id="radiobtn" name="c<?php echo $i;?>" value="1" required >
                   <span class="checkmark"></span></h5>
                 </label>
 
                 <label class="container"><h5><?php echo $result["c2"];?>
-                <input type="radio" name="c<?php echo $i;?>" value="2">
+                <input type="radio" class="form-check-input" id="radiobtn" name="c<?php echo $i;?>" value="2">
                 <span class="checkmark"></span></h5>
               </label>
 
               <label class="container"><h5><?php echo $result["c3"];?>
-              <input type="radio" name="c<?php echo $i;?>" value="3">
+              <input type="radio" class="form-check-input" id="radiobtn" name="c<?php echo $i;?>" value="3">
               <span class="checkmark"></span></h5>
 
             </label>
             <label class="container"><h5><?php echo $result["c4"];?>
-            <input type="radio" name="c<?php echo $i;?>" value="4">
+            <input type="radio" class="form-check-input" id="radiobtn" name="c<?php echo $i;?>" value="4">
             <span class="checkmark"></span></h5>
           </label>
 
@@ -347,22 +351,9 @@ function bf(){
     <?php } ?>
 
 
-</div>
-</div>
-    <!-- footer -->
-    <footer class="page-footer font-small default-color" >
-
-      <!-- Copyright -->
-      <div class="footer-copyright text-center py-3 ">
-        © 2019 Copyright: RMUTK 
-
-      </div>
-      <!-- Copyright -->
-
-    </footer>
-  
-
-
+  </div>
+  <?php include 'footer.php'; ?>
+  </div>
 
 </body>
 

@@ -69,36 +69,48 @@ if(session_status() == PHP_SESSION_NONE){
       <!--Grid row-->
       <?php
       if ($learning <> ''): ?>
+        <div class="container">
+          <div class="row">
+            <style>
+              .footer {
+               position: fixed;
+               bottom: 0;
+               width: 83%;
+               color: white;
+               text-align: center;
+             }
+           </style>
+           <?php include 'footer.php'; ?>
+         </div>
+       </div>
+       <?php else: ?>
 
-        <?php include 'footer.php'; ?>
-        <?php else: ?>
+        <!-- footer -->
+        <footer class="page-footer font-small default-color" >
 
-          <!-- footer -->
-          <footer class="page-footer font-small default-color" >
+          <!-- Copyright -->
+          <div class="footer-copyright text-center py-3 ">
+            © 2019 Copyright: RMUTK 
 
-            <!-- Copyright -->
-            <div class="footer-copyright text-center py-3 ">
-              © 2019 Copyright: RMUTK 
+          </div>
+          <!-- Copyright -->
 
-            </div>
-            <!-- Copyright -->
+        </footer>
+      <?php endif ?>
 
-          </footer>
-        <?php endif ?>
-
-      </div>
     </div>
   </div>
+</div>
 
-  <!-- SCRIPTS -->
-  <!-- JQuery -->
-  <script type="text/javascript" src="MDBcss/js/jquery-3.3.1.min.js"></script>
-  <!-- Bootstrap tooltips -->
-  <script type="text/javascript" src="MDBcss/js/popper.min.js"></script>
-  <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript" src="MDBcss/js/bootstrap.min.js"></script>
-  <!-- MDB core JavaScript -->
-  <script type="text/javascript" src="MDBcss/js/mdb.min.js"></script>
+<!-- SCRIPTS -->
+<!-- JQuery -->
+<script type="text/javascript" src="MDBcss/js/jquery-3.3.1.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="MDBcss/js/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="MDBcss/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="MDBcss/js/mdb.min.js"></script>
 </body>
 
 </html>

@@ -28,7 +28,7 @@ aria-hidden="true">
         <div class="text-center">
           <button type="submit" class="btn btn-success btn-block btn-rounded z-depth-1 my-4">เข้าสู่ระบบ</button>
 
-          <a href="?register"type="submit" class="btn btn-default btn-rounded z-depth-1">สมัครสามชิก</a>
+          <a href="?register"type="submit" class="btn btn-default btn-rounded z-depth-1">สมัครสมาชิก</a>
           <a href="#" type="submit" class="btn btn-secondary btn-rounded z-depth-1" data-toggle="modal" data-dismiss="modal" data-target="#resetpassword">ลืมรหัสผ่าน</a>
         </div>
       </div>
