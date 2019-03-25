@@ -19,12 +19,12 @@ mysqli_close($con);
 if($result){
 	echo "<script>";
 	echo "alert('เพิ่ม หมวดหมู่ เรียบร้อยแล้ว');";
-	echo "window.location ='showchoice.php'; ";
+	echo "window.location ='index.php?showchoice'; ";
 	echo "</script>";
 } else {
 	echo "<script>";
 	echo "alert('ERROR!');";
-	echo "window.location ='showchoice'; ";
+	echo "window.location ='index.php?showchoice'; ";
 	echo "</script>";
 }
 ?>

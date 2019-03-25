@@ -35,7 +35,7 @@ if (isset($_GET['choice_id'])) {
             </div>
 
             <button type="submit" class="btn btn-primary">แก้ไข</button> 
-            <a href="showchoice.php" type="submit" class="btn btn-danger" >ยกเลิก</a>
+            <a href="index.php?sc" type="submit" class="btn btn-danger" >ยกเลิก</a>
           </form>
         </div>
       </div>

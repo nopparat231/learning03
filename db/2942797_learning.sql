@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.4
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: fdb25.runhosting.com
--- Generation Time: Mar 15, 2019 at 01:39 PM
--- Server version: 5.7.20-log
--- PHP Version: 5.5.38
+-- Host: 127.0.0.1
+-- Generation Time: Mar 24, 2019 at 05:26 PM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 5.6.40
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `2942797_learning`
+-- Database: `learning02`
 --
 
 -- --------------------------------------------------------
@@ -29,17 +31,17 @@ SET time_zone = "+00:00";
 CREATE TABLE `choice` (
   `choice_id` int(11) NOT NULL,
   `choice_name` varchar(100) NOT NULL,
-  `video` varchar(300) NOT NULL
+  `video` varchar(300) NOT NULL,
+  `choice_detail` varchar(100) NOT NULL,
+  `choice_status` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `choice`
 --
 
-INSERT INTO `choice` (`choice_id`, `choice_name`, `video`) VALUES
-(1, 'การดูแลผู้สูงอายุ', 'https://www.youtube.com/watch?v=jyRLALwqjX8'),
-(2, 'ทดสอบ Hey', 'https://www.youtube.com/watch?v=PX7oPIjsofY'),
-(3, 'ทดสอบ Cat', 'https://www.youtube.com/watch?v=hY7m5jjJ9mM');
+INSERT INTO `choice` (`choice_id`, `choice_name`, `video`, `choice_detail`, `choice_status`) VALUES
+(1, 'แขนกล คนนอนดึก', 'https://www.youtube.com/watch?v=HnPOLQvMm0E', 'ทดสอบ รายละเอียด', 0);
 
 -- --------------------------------------------------------
 
@@ -94,17 +96,7 @@ INSERT INTO `testing` (`id`, `choice_id`, `question`, `c1`, `c2`, `c3`, `c4`, `a
 (44, 1, 'ข้อใด ไม่ใช่ ลักษณะห้องน้ำของผู้สูงอายุที่ถูกต้อง', 'ห้องน้ำไม่ควรลื่นแม้จะเปียก', 'ห้องอาบน้ำควรมีแผ่นยางหรือวัสดุกันลื่น', 'ควรมีราวจับขณะที่เข้าหรือออกจากอ่างอาบน้ำ', 'ควรมีเก้าอี้นั่งอาบน้ำสำหรับผู้สูงอายุ', 4),
 (45, 1, 'ข้อใด ไม่ใช่ ลักษณะห้องนอนของผู้สูงอายุที่ถูกต้อง', 'เว้นที่รอบๆเตียงนอน เพื่อจะเดินได้อย่างปลอดภัย', 'ควรมีเก้าอี้หนึ่งตัว เพื่อไว้แต่งตัว', 'วางตะเกียงหรือไฟฉายไว้ใกล้ที่นอนพอที่จะเอื้อมถึงได้', 'มีราวจับหลายๆอันไว้ใน ห้องนอน', 4),
 (46, 1, 'ข้อใดคือ สิ่งสำคัญในการใช้ยาอย่างถูกต้องควรทำอย่างไร เพื่อให้สามารถ ใช้ยาได้อย่างถูกคน ถูกโรค ถูกขนา', 'อ่านฉลากยาให้ถี่ถ้วน ', 'รับประทานยาตาม ที่เวลาตัวเราเองสะดวก โดยไม่ได้ดูฉลากยา', 'รับประทานยาทันทีเมื่อเกิดอาการไข้ โดยไม่ได้ดูฉลากยา', 'ใช้ยาเกินขนาด ไม่รับประทานตามที่หมอบอก', 1),
-(47, 1, 'ข้อใด ไม่ใช่ ความสะอาดสะอ้าน ในด้านสิ่งแวดล้อม', 'ทุกห้องควรได้รับการดูแล ไม่ควรมี เศษฝุ่น', 'ทุกห้อง อาจจะมีเศษขยะได้บ้างเล็กน้อย', 'ทุกห้องควรปลอดกลิ่นเหม็นจากสิ่งปฏิกูล', 'ทุกห้องไม่ควรมีกลิ่น ควันบุหรี่ ทินเนอร์', 2),
-(48, 3, 'ข้อที่ 3', 'ตัวเลือกที่ 1', 'ตัวเลือกที่ 2', 'ตัวเลือกที่ 3', 'ตัวเลือกที่ 4', 3),
-(49, 3, 'ข้อที่ 4', 'ตัวเลือกที่ 1', 'ตัวเลือกที่ 2', 'ตัวเลือกที่ 3', 'ตัวเลือกที่ 4', 4),
-(50, 3, 'ข้อที่ 5', 'ตัวเลือกที่ 1', 'ตัวเลือกที่ 2', 'ตัวเลือกที่ 3', 'ตัวเลือกที่ 4', 4),
-(51, 3, 'ข้อที่ 6', 'ตัวเลือกที่ 1', 'ตัวเลือกที่ 2', 'ตัวเลือกที่ 3', 'ตัวเลือกที่ 4', 3),
-(52, 3, 'ข้อที่ 7', 'ตัวเลือกที่ 1', 'ตัวเลือกที่ 2', 'ตัวเลือกที่ 3', 'ตัวเลือกที่ 4', 2),
-(53, 3, 'ข้อที่ 8', 'ตัวเลือกที่ 1', 'ตัวเลือกที่ 2', 'ตัวเลือกที่ 3', 'ตัวเลือกที่ 4', 1),
-(54, 3, 'ข้อที่ 9', 'ตัวเลือกที่ 1', 'ตัวเลือกที่ 2', 'ตัวเลือกที่ 3', 'ตัวเลือกที่ 4', 2),
-(55, 3, 'ข้อที่ 10', 'ตัวเลือกที่ 1', 'ตัวเลือกที่ 2', 'ตัวเลือกที่ 3', 'ตัวเลือกที่ 4', 3),
-(56, 6, 'ทดทดทดทด13', 'ข้อที่ 1', 'ข้อที่ 2', 'ข้อที่ 3', 'ข้อที่ 4', 2),
-(57, 6, 'ทดทดทดทด15', 'ข้อที่ 1', 'ข้อที่ 2', 'ข้อที่ 3', 'ข้อที่ 4', 2);
+(47, 1, 'ข้อใด ไม่ใช่ ความสะอาดสะอ้าน ในด้านสิ่งแวดล้อม', 'ทุกห้องควรได้รับการดูแล ไม่ควรมี เศษฝุ่น', 'ทุกห้อง อาจจะมีเศษขยะได้บ้างเล็กน้อย', 'ทุกห้องควรปลอดกลิ่นเหม็นจากสิ่งปฏิกูล', 'ทุกห้องไม่ควรมีกลิ่น ควันบุหรี่ ทินเนอร์', 2);
 
 -- --------------------------------------------------------
 
@@ -121,6 +113,7 @@ CREATE TABLE `user` (
   `email` varchar(100) NOT NULL,
   `phone` text NOT NULL,
   `Userlevel` varchar(1) NOT NULL,
+  `user_date` date NOT NULL,
   `session_id` varchar(50) NOT NULL,
   `Status` varchar(1) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -129,23 +122,9 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`ID`, `Username`, `Password`, `Firstname`, `Lastname`, `email`, `phone`, `Userlevel`, `session_id`, `Status`) VALUES
-(30, 'aaaa', 'aaaa', 'admin', 'admin', '23.noop@gmail.com', '5165165165', 'A', '1476514e0f154b00cdfc68033cac8b01', 'Y'),
-(31, 'gggg', 'gggggg', 'gggg', 'gggg', 'oiru6699@gmail.com', '5454543432', 'M', '1476514e0f154b00cdfc68033cac8b01', 'N'),
-(32, 'test', 'napatta', 'napatta', 'eiamsumang', 'napatta-06@hotmail.com', '0958653650', 'M', '21e161cd3f4fa57f84eeaf1146b3c308', 'Y'),
-(33, 'gggggg', 'gggggg', 'gggggg', 'ggggggg', 'oiru6699@hmail.com', '9999999999', 'M', '1f6d7ec5e2769c188516a13239ac65af', 'N'),
-(34, 'kkkkkk', 'kkkkkk', 'kkkkkk', 'kkkkkk', '23noop02@gmail.com', '8888888888', 'M', '1f6d7ec5e2769c188516a13239ac65af', 'Y'),
-(35, 'asdf', 'pp0889614260', 'vvv', 'vvv', 'smileprae.0306@hotmail.com', '0889614260', 'M', '98a5c466a000c37188a6db5b72f53f9e', 'Y'),
-(36, '', '', '', '', '', '', 'M', '61b74e73c35ace20a9e95838d74430f3', 'N'),
-(37, 'seeprae', '173812', 'แพรวา', 'ปราบแก้ว', 'pear17_@hotmail.com', '0958653658', 'M', '887946017dcbefaa749f133cf41e3d65', 'N'),
-(38, 'vanvisa', '199517', 'prae', 'prabkeaw', 'prae17_@hotmail.com', '0958653658', 'M', '887946017dcbefaa749f133cf41e3d65', 'N'),
-(39, 'test1', 'test11', 'test', 'tt', '596051800230@mail.rmutk.ac.th', '0958653650', 'M', '7267c272176288db0d140774a326eff9', 'N'),
-(40, 'testt', 'test11', 'test', 'ere', 'dokkyp01@hotmail.com', '0958653658', 'M', '7267c272176288db0d140774a326eff9', 'N'),
-(41, 'Siri', '111111', 'Siri', 'Yawa', 'skunkkik192022@hitmail.com', '0992016685', 'M', 'b9db3829d0bf9ffd098435e4415f5b33', 'N'),
-(42, 'Sirik', '111111', 'Sirik', 'Yawa', 'skunkkik192022@hotmail.com', '0992016685', 'M', 'b9db3829d0bf9ffd098435e4415f5b33', 'Y'),
-(43, 'gggggg', '222222', 'Sirik', 'Yawa', 'skunkkik192022@hotmail.com', '0992016685', 'M', 'b9db3829d0bf9ffd098435e4415f5b33', 'Y'),
-(44, 'hhggg', 'gggggg', 'gggggg', 'ggggggg', '23noop@gmail.com', '7777777777', 'M', 'fdc1e278676cd8877f58ab2b0c3dc5c6', 'N'),
-(45, 'nikorn', 'nnnnnn', 'nikorn', 'k', 'nikorn.k@mail.rmutk.ac.th', '0', 'M', '531b30ee59b8d04777c7fce82712b3ed', 'N');
+INSERT INTO `user` (`ID`, `Username`, `Password`, `Firstname`, `Lastname`, `email`, `phone`, `Userlevel`, `user_date`, `session_id`, `Status`) VALUES
+(30, 'admin', 'Aa123456', 'admin1', 'admin1', '23.noop@gmail.com', '5165165165', 'A', '0000-00-00', '1476514e0f154b00cdfc68033cac8b01', 'Y'),
+(44, 'User', 'Aa123456', 'GGGGMM', 'GGGGGMM', '23.noop@gmail.com', '8888888888', 'M', '0000-00-00', 'fdc1e278676cd8877f58ab2b0c3dc5c6', 'Y');
 
 -- --------------------------------------------------------
 
@@ -166,12 +145,7 @@ CREATE TABLE `user_learning` (
 --
 
 INSERT INTO `user_learning` (`user_learning_id`, `choice_id`, `user_id`, `user_learning_bf`, `user_learning_af`) VALUES
-(26, 1, 32, 6, '6'),
-(27, 2, 32, 1, '2'),
-(28, 1, 35, 5, '5'),
-(29, 3, 32, 2, '1'),
-(30, 1, 42, 6, '6'),
-(31, 1, 43, 7, '6');
+(40, 1, 44, 5, '7');
 
 --
 -- Indexes for dumped tables
@@ -209,22 +183,27 @@ ALTER TABLE `user_learning`
 -- AUTO_INCREMENT for table `choice`
 --
 ALTER TABLE `choice`
-  MODIFY `choice_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `choice_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `testing`
 --
 ALTER TABLE `testing`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `ID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `ID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+
 --
 -- AUTO_INCREMENT for table `user_learning`
 --
 ALTER TABLE `user_learning`
-  MODIFY `user_learning_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `user_learning_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

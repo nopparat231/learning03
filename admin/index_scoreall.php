@@ -1,29 +1,16 @@
-<?php session_start();?>
-<html>
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="https://static.pingendo.com/bootstrap/bootstrap-4.1.3.css">
-</head>
-<?php include 'navbar.php'; ?>
-<?php include '../conn.php'; ?>
 <?php 
 
 
 
-$query_learning = "SELECT * FROM choice as c , user as u, user_learning as l where l.choice_id = c.choice_id and l.user_id = u.id order by l.user_learning_af desc" ;
+$query_learning = "SELECT * FROM choice as c , user as u, user_learning as l where l.choice_id = c.choice_id and l.user_id = u.id order by l.user_learning_id desc" ;
 $learning = mysqli_query($con,$query_learning) or die(mysqli_error());
 $row_learning = mysqli_fetch_assoc($learning);
 $totalRows_learning = mysqli_num_rows($learning);
 
 
 ?>
-<?php include 'datatables.php'; ?>
 
-<body>
-
+<div class="col-md-9 bg-light">
  <div class="py-2">
   <div class="container">
     <div class="row">
@@ -91,9 +78,4 @@ $totalRows_learning = mysqli_num_rows($learning);
     </div>
   </div>
 </div>
-<?php include 'footer_admin.php'; ?>
-
-
-</body>
-
-</html>
+</div>
