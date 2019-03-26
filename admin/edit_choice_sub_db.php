@@ -32,12 +32,12 @@ mysqli_close($con);
 if($result){
 	echo "<script>";
 	echo "alert('แก้ไข คำถาม เรียบร้อยแล้ว');";
-	echo "window.location ='index.php?showchoice_s'; ";
+	echo "window.location ='index.php?showchoice_s&choice_id=$choice_id'; ";
 	echo "</script>";
 } else {
 	echo "<script>";
 	echo "alert('ERROR!');";
-	echo "window.location ='index.php?showchoice_s'; ";
+	echo "window.location ='index.php?showchoice_s&choice_id=$choice_id'; ";
 	echo "</script>";
 }
 ?>

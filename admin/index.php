@@ -41,6 +41,7 @@ if(session_status() == PHP_SESSION_NONE){
           $su = isset($_REQUEST['su']);
           $eu = isset($_REQUEST['eu']);
           $sc = isset($_REQUEST['sc']);
+          $sco = isset($_REQUEST['sco']);
 
           if ($in <> '') {
             include 'index_scoreall.php';
@@ -58,26 +59,59 @@ if(session_status() == PHP_SESSION_NONE){
             include 'show_user.php';
           }elseif ($eu <> '') {
             include 'edit_user.php';
-          }elseif ($sc <> '') {
+          }elseif ($sc <> '' or $sco <> '') {
             include 'show_choice_all.php';
-          }
+          }else{ ?>
 
-          ?>
 
-        </div>
+            <div class="col-md-9 bg-light">
+              <div class="embed-responsive embed-responsive-16by9">
+               <iframe width="560" height="315" src="https://www.youtube.com/embed/HnPOLQvMm0E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+             </div>
+             <br>
+             <font color="red">
+              <h4 class="">คำแนะนำ </h4>
+              <h5>
+                <ol class="">
+                  <li>ระบบมีมาตราการเพื่อป้องกันข้อมูลส่วนบุคคล ขอให้ท่านได้ศึกษาและปฏิบัติตามขั้นตอนตามลำดับ</li>
+                  <li>ท่านต้องลงทะเบียนและใช้รหัสผ่านในการเข้าสู่ระบบ</li>
+                  <li>ควรเป็นผู้ทำรายการทุกขั้นตอนด้วยตัวเองและรักษารหัสผ่านเป็นความลับเพื่อป้องกันการแอบอ้างการเข้าสู่ระบบ</li>
+                  <li>ผู้ที่ยังไม่สมัครเป็นสมาชิกให้กดปุ่ม สมัครสมาชิก สำหรับผู้ที่สมัครเป็นสมาชิกให้กดปุ่ม เข้าสู่ระบบ เพื่อทำการ Login เข้าสู่ระบบ</li>
+
+                </ol>
+              </h5>
+            </font>
+            <br><br><br><br><br><br>
+          </div>
+
+
+          <?php
+        }
+
+        ?>
+
       </div>
     </div>
   </div>
-  <style>
-    .footer {
-     position: fixed;
-     bottom: 0;
-     width: 100%;
-     color: white;
-     text-align: center;
-   }
- </style>
- <?php include 'footer_admin.php'; ?>
-</body>
+</div>
 
-</html>
+<?php if ($eu <> ''): ?>
+
+
+    <?php else: ?>
+      <style>
+        .footer {
+         position: fixed;
+         bottom: 0;
+         width: 100%;
+         color: white;
+         text-align: center;
+       }
+     </style>
+     
+   <?php endif ?>
+<?php include 'footer_admin.php'; ?>
+   
+ </body>
+
+ </html>

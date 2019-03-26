@@ -1,9 +1,9 @@
 
 <?php 
+$choice_id = $_GET['choice_id'];
 
 
-
-$query_learning = "SELECT * FROM testing order by choice_id asc " ;
+$query_learning = "SELECT * FROM testing WHERE choice_id = '$choice_id' order by id desc " ;
 $learning = mysqli_query($con,$query_learning) or die(mysqli_error());
 $row_learning = mysqli_fetch_assoc($learning);
 $totalRows_learning = mysqli_num_rows($learning);
@@ -43,7 +43,7 @@ $totalRows_learning = mysqli_num_rows($learning);
         <th scope="col">คำตอบ</th>
         
         <th scope="col" width="5">แก้ไข</th>
-        <th scope="col" width="5">ลบ</th>
+        <th scope="col" width="5">ยกเลิก</th>
       </tr>
     </thead>
     <tbody>
@@ -54,7 +54,7 @@ $totalRows_learning = mysqli_num_rows($learning);
 
         <?php
 
-        $query_learningc = "SELECT * FROM choice where choice_id = ".$row_learning['choice_id'];
+        $query_learningc = "SELECT * FROM choice where choice_id = '$choice_id' and choice_id = ".$row_learning['choice_id'];
         $learningc = mysqli_query($con,$query_learningc) or die(mysqli_error());
         $row_learningc = mysqli_fetch_assoc($learningc);
         $totalRows_learningc = mysqli_num_rows($learningc);
@@ -71,9 +71,17 @@ $totalRows_learning = mysqli_num_rows($learning);
           <td><?php echo $row_learning['answer']; ?></td>
 
           
-          <td><a href="edit_choice_sub.php?id=<?php echo $row_learning['id'];?>" class="btn btn-outline-warning my-2 my-sm-0" >แก้ไข</a></td>
+          <td><a href="edit_choice_sub.php?choice_id=<?php echo $choice_id; ?>&id=<?php echo $row_learning['id'];?>" class="btn btn-outline-warning my-2 my-sm-0" ><i class="fa fa-pencil-square-o text-muted fa-mg"></a></td>
           
-          <td><a href="del_choice_sub.php?id=<?php echo $row_learning['id'];?>" class="btn btn-outline-danger my-2 my-sm-0" onClick="return confirm('ยืนยันการลบคำถาม');">ลบ</a></td>
+          <?php if ($row_learning['status'] <> 1 ): ?>
+            <td>
+              <a href="del_choice_sub.php?choice_id=<?php echo $choice_id; ?>&id=<?php echo $row_learning['id'];?>&st=1" class="btn btn-outline-danger my-2 my-sm-0" onClick="return confirm('ยืนยันการยกเลิกคำถาม');"><i class="fa fa-window-close-o text-muted fa-mg"></i></a>
+            </td>
+            <?php else: ?>
+             <td>
+              <a href="del_choice_sub.php?choice_id=<?php echo $choice_id; ?>&id=<?php echo $row_learning['id'];?>&st=0" class="btn btn-outline-info my-2 my-sm-0" onClick="return confirm('ยืนยันการใช้งานคำถาม');"><i class="fa fa fa-repeat text-muted fa-mg"></i></a>
+            </td>
+          <?php endif ?>
         </tr>
 
         <?php 
@@ -83,7 +91,7 @@ $totalRows_learning = mysqli_num_rows($learning);
     </tbody>
   </table>
 <?php }else {
-  echo "<h3> ยังไม่มีคะแนน </h3>";
+  echo "<h3><br /> ยังไม่มีคำถาม </h3>";
 }
 
 mysqli_free_result($learning);?>

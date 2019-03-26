@@ -1,8 +1,8 @@
 <?php 
 
+$choice_id = $_GET['choice_id'];
 
-
-$query_learning = "SELECT * FROM choice as c , user as u, user_learning as l where l.choice_id = c.choice_id and l.user_id = u.id order by l.user_learning_id desc" ;
+$query_learning = "SELECT * FROM choice as c , user as u, user_learning as l WHERE c.choice_id = '$choice_id' and l.choice_id = c.choice_id and l.user_id = u.id order by l.user_learning_af desc" ;
 $learning = mysqli_query($con,$query_learning) or die(mysqli_error());
 $row_learning = mysqli_fetch_assoc($learning);
 $totalRows_learning = mysqli_num_rows($learning);
@@ -61,7 +61,7 @@ $totalRows_learning = mysqli_num_rows($learning);
             </tbody>
           </table>
         <?php }else {
-          echo "<h3> ยังไม่มีคะแนน </h3>";
+          echo "<h3> <br /> ยังไม่มีคะแนน </h3>";
         }
 
         mysqli_free_result($learning);?>

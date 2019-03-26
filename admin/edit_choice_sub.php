@@ -8,6 +8,7 @@
 if (isset($_GET['id'])) {
 
   $id = $_GET['id'];
+  $choice_id = $_GET['choice_id'];
 
   $query_editc = "SELECT * FROM testing where id = $id";
   $editc = mysqli_query($con,$query_editc) or die(mysqli_error());
@@ -102,7 +103,7 @@ if (isset($_GET['id'])) {
 </div>
 
 <button type="submit" class="btn btn-primary">แก้ไข</button> 
-<a href="index.php?showchoice_s" type="submit" class="btn btn-danger" >ยกเลิก</a>
+<a href="index.php?showchoice_s?choice_id=<?php echo $choice_id; ?>" type="submit" class="btn btn-danger" >ยกเลิก</a>
 </form>
 </div>
 </div>

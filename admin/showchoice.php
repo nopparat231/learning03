@@ -1,7 +1,7 @@
 
 <?php 
 
-$query_learning = "SELECT * FROM choice";
+$query_learning = "SELECT * FROM choice order by choice_id";
 $learning = mysqli_query($con,$query_learning) or die(mysqli_error());
 $row_learning = mysqli_fetch_assoc($learning);
 $totalRows_learning = mysqli_num_rows($learning);
@@ -45,7 +45,7 @@ $totalRows_learning = mysqli_num_rows($learning);
                 <th scope="col">URl Youtube</th>
 
                 <th scope="col" width="5">แก้ไข</th>
-                <th scope="col" width="5">ลบ</th>
+                <th scope="col" width="5">สถานะ</th>
               </tr>
             </thead>
             <tbody>
@@ -65,10 +65,15 @@ $totalRows_learning = mysqli_num_rows($learning);
                     <a href="edit_choice.php?choice_id=<?php echo $row_learning['choice_id'];?>" class="btn btn-outline-warning my-2 my-sm-0" >แก้ไข</a>
                   </td>
 
-                  <td>
-                    <a href="del_choice.php?choice_id=<?php echo $row_learning['choice_id'];?>" class="btn btn-outline-danger my-2 my-sm-0" onClick="return confirm('ยืนยันการลบหมวดหมู่');">ลบ</a>
-                  </td>
-
+                  <?php if ($row_learning['choice_status'] <> 1 ): ?>
+                    <td>
+                      <a href="del_choice.php?choice_id=<?php echo $row_learning['choice_id'];?>&st=1" class="btn btn-outline-danger my-2 my-sm-0" onClick="return confirm('ยืนยันการยกเลิกคำถาม');">ยกเลิก</a>
+                    </td>
+                    <?php else: ?>
+                     <td>
+                      <a href="del_choice.php?choice_id=<?php echo $row_learning['choice_id'];?>&st=0" class="btn btn-outline-info my-2 my-sm-0" onClick="return confirm('ยืนยันการใช้งานคำถาม');">ใช้งาน</a>
+                    </td>
+                  <?php endif ?>
                 </tr>
 
                 <?php 

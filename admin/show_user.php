@@ -59,7 +59,20 @@ $totalRows_user = mysqli_num_rows($user);
 											<td><?php echo $row_user['Firstname'] . "  " . $row_user['Lastname']; ?></td>
 											<td><?php echo " เบอร์โทร " . $row_user['phone'] . " <br /> อีเมล์ " . $row_user['email']; ?></td>
 											<td><?php echo $row_user['user_date']; ?></td>
-											<td><?php echo $row_user['Userlevel']; ?></td>
+											<td>
+												<?php 
+
+												if ($row_user['Userlevel'] == 'A' ){
+													echo "Admin";
+												}elseif ($row_user['Userlevel'] == 'M') {
+													echo "User";
+												}elseif ($row_user['Userlevel'] == 'E') {
+													echo "Expired";
+												}
+
+												?>
+
+											</td>
 
 
 											<td>

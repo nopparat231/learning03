@@ -1,6 +1,6 @@
 
 <?php 
-
+date_default_timezone_set('Asia/Bangkok');
 $user_id = $_GET['user_id'];
 
 $check = "SELECT * FROM user WHERE id = '$user_id' ";
@@ -55,6 +55,18 @@ $num = mysqli_fetch_assoc($result);
                       <div class="col-10">
                         <div class="input-group">
                           <?php echo($num['phone'])?></div>
+                        </div>
+                      </div>
+                       <div class="form-group row">
+                      <label class="col-2">วันหมดอายุ<br></label>
+                      <div class="col-10">
+                        <div class="input-group">
+                          
+                           <?php $da = date('d-m-Y',strtotime($num['user_date'])); ?>
+                          <?php echo $da; ?>
+                            
+                            
+                          </div>
                         </div>
                       </div>
 
