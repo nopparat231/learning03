@@ -41,15 +41,15 @@ $totalRows_testing = mysqli_num_rows($testing);
             <?php if ($result3['user_learning_af'] == 'ยังไม่ทำ'){ ?>
              <li class="list-group">
               <h3>
-
-                <a href="choice.php?choice_id=<?php echo $row_choice['choice_id'];?>&user_id=<?php echo $_SESSION['UserID'];?>&aff=aff" class="list-group-item list-group-item-action list-group-item-info"><?php echo $row_choice['choice_name']; ?></a>
+<!-- บทสอง -->
+                <a href="index.php?ch&choice_id=<?php echo $row_choice['choice_id'];?>&user_id=<?php echo $_SESSION['UserID'];?>&aff=aff" class="list-group-item list-group-item-action list-group-item-info"><?php echo $row_choice['choice_name']; ?></a>
               </h3>
             </li>
 
           <?php }else{ ?>
             <li class="list-group">
               <h3>
-
+<!-- ทำแล้ว -->
                 <a href="index.php?wa&choice_id=<?php echo $row_choice['choice_id'];?>&user_id=<?php echo $_SESSION['UserID'];?>&aff=aff&cff" class="list-group-item list-group-item-action list-group-item-danger"><?php echo $row_choice['choice_name']; ?></a>
               </h3>
             </li>
@@ -61,8 +61,8 @@ $totalRows_testing = mysqli_num_rows($testing);
 
          <li class="list-group">
           <h3>
-
-            <a href="choice.php?choice_id=<?php echo $row_choice['choice_id'];?>&user_id=<?php echo $_SESSION['UserID'];?>&bff=bff" class="list-group-item list-group-item-action list-group-item-primary"><?php echo $row_choice['choice_name']; ?></a>
+<!-- ยังไม่ทำ -->
+            <a href="index.php?ch&choice_id=<?php echo $row_choice['choice_id'];?>&user_id=<?php echo $_SESSION['UserID'];?>&bff=bff" class="list-group-item list-group-item-action list-group-item-primary"><?php echo $row_choice['choice_name']; ?></a>
           </h3>
         </li>
       <?php } ?>
