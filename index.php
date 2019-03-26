@@ -22,85 +22,99 @@ if(session_status() == PHP_SESSION_NONE){
   <!-- Your custom styles (optional) -->
   <link href="MDBcss/css/style.css" rel="stylesheet">
 </head>
-
+ <?php include 'navbar.php'; ?> 
 <body style="background-color: #FFF7F7">
 
- <div class="container">
-  <div class="row">
-    <div class="col-md-12">
-
-     <?php include 'navbar.php'; ?>
-
-     <?php include 'model.php'; ?>
 
 
-     <!--Grid row-->
-     <div class="row d-flex justify-content-center">
-
-      <!--Grid column-->
-      <div class="col-md-12">
+  <div class="container" >
 
 
-       <?php
-       $regis = isset($_GET['register']);
-       $learning = isset($_GET['learning']);
+    <div class="row" style="background-color: #FFFEF0" >
 
-       if ($learning <> ''): ?>
 
-        <?php include 'index1.php'; ?>
+      <?php include("conn.php"); ?>
 
-        <?php elseif ($regis <> ''): ?>
 
-          <?php include 'register.php'; ?>
+      <?php include 'model.php'; ?>
 
-          <?php else: ?>
 
-            <!-- Video -->
-            <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
-              <iframe class="embed-responsive-item" src="https://www.youtube.com/watch?v=EErY75MXYXI" allowfullscreen></iframe>
-            </div>
-
-          <?php endif ?>
-
-        </div>
-        <!--Grid column-->
-
-      </div>
       <!--Grid row-->
+      <div class="col"></div>
+      <!--Grid column-->
+
+
+
       <?php
-      if ($learning <> ''): ?>
-        <div class="container">
-          <div class="row">
-            <style>
-              .footer {
-               position: fixed;
-               bottom: 0;
-               width: 83%;
-               color: white;
-               text-align: center;
-             }
-           </style>
-           <?php include 'footer.php'; ?>
-         </div>
-       </div>
-       <?php else: ?>
+      $regis = isset($_GET['register']);
+      $learning = isset($_GET['learning']);
 
-        <!-- footer -->
-        <footer class="page-footer font-small default-color" >
+      $editprofs = isset($_GET['editprofs']);
+      $editprof = isset($_GET['editprof']);
+      $editpas = isset($_GET['editpas']);
+      $sc = isset($_GET['sc']);
+      $scl = isset($_GET['scl']);
+      $wa = isset($_GET['wa']);
+      $ch = isset($_GET['ch']);
+      $aw = isset($_GET['aw']);
 
-          <!-- Copyright -->
-          <div class="footer-copyright text-center py-3 ">
-            © 2019 Copyright: RMUTK 
 
-          </div>
-          <!-- Copyright -->
+      if ($learning <> ''){
+        include 'index1.php';
+      }elseif ($regis <> ''){
+        include 'register.php';
+      }elseif ($editprofs <> ''){
+        include 'editprofile_show.php';
+      }elseif ($editprof <> ''){
+        include 'editprofile.php';
+      }elseif ($editpas <> ''){
+        include 'edit_password.php';
+      }elseif ($sc <> ''){
+        include 'score.php';
+      }elseif ($scl <> ''){
+        include 'score_all.php';
+      }elseif ($wa <> ''){
+        include 'watch.php';
+      }elseif ($ch <> ''){
+        include 'choice.php';
+      }elseif ($aw <> ''){
+        include 'answer.php';
+      }elseif ($regis <> ''){
 
-        </footer>
-      <?php endif ?>
+      }else{ ?>
 
-    </div>
+       <!-- Video -->
+       <?php
+       $cff = isset($_GET['cff']);
+       $url = 'https://www.youtube.com/watch?v=aqDmiAhju78';
+       preg_match('/[\\?\\&]v=([^\\?\\&]+)/', $url, $matches);
+       $id = $matches[1];
+       $width = '800px';
+       $height = '450px';
+       ?>
+       <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
+        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<?php echo $id ?>" allowfullscreen></iframe>
+      </div>
+      <br><br><br>
+    <?php }  ?>
+
+
+
+
+    <!--Grid column-->
+
+
+    <div class="col"></div>
   </div>
 </div>
+
+<!--Grid row-->
+
+
+
+
+<!-- footer -->
+<?php include 'footer.php'; ?>
 
 <!-- SCRIPTS -->
 <!-- JQuery -->

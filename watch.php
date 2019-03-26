@@ -1,24 +1,5 @@
-<?php session_start();?>
-<html>
-
-<head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>สื่อการเรียนรู้</title>
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
-  <!-- Bootstrap core CSS -->
-  <link href="MDBcss/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Material Design Bootstrap -->
-  <link href="MDBcss/css/mdb.min.css" rel="stylesheet">
-  <!-- Your custom styles (optional) -->
-  <link href="MDBcss/css/style.css" rel="stylesheet">
-</head>
 
 
-<?php include 'conn.php'; ?>
 <?php 
 $choice_id = $_GET['choice_id'];
 $user_id = $_GET['user_id'];
@@ -28,23 +9,15 @@ $watch = mysqli_query($con,$query_watch) or die(mysqli_error());
 $row_watch = mysqli_fetch_assoc($watch);
 $totalRows_watch = mysqli_num_rows($watch);
 ?>
-
-
-
-
-<body style="background-color: #FFF7F7">
- <div class="container">
-
-  <?php include 'navbar.php'; ?>
-  <div class="py-2">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12" style="background-color: #FFFEF0">
-          <h1 class="text-center"><b><?php echo $row_watch['choice_name']; ?></b></h1>
-        </div>
+<div class="col-12">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12" style="background-color: #FFFEF0">
+        <h1 class="text-center"><b><?php echo $row_watch['choice_name']; ?></b></h1>
       </div>
     </div>
   </div>
+  
   <div class="py-2">
     <div class="container">
       <div class="row">
@@ -90,7 +63,7 @@ $totalRows_watch = mysqli_num_rows($watch);
       <div class="container">
         <div class="row">
           <div class="col-md-12 text-center">
-            <a class="btn btn-secondary" href="choice.php?choice_id=<?php echo $row_watch['choice_id'];?>&user_id=<?php echo $_SESSION['UserID'];?>&aff=aff">ทำแบบทดสอบหลังเรียน</a></div>
+            <a class="btn btn-secondary" href="index.php?ch&choice_id=<?php echo $row_watch['choice_id'];?>&user_id=<?php echo $_SESSION['UserID'];?>&aff=aff">ทำแบบทดสอบหลังเรียน</a></div>
           </div>
         </div>
       </div>
@@ -99,23 +72,16 @@ $totalRows_watch = mysqli_num_rows($watch);
         <div class="container">
           <div class="row">
             <div class="col-md-12 text-center">
-              <a class="btn btn-secondary" id="npbutton" style="display: none;" href="choice.php?choice_id=<?php echo $row_watch['choice_id'];?>&user_id=<?php echo $_SESSION['UserID'];?>&aff=aff">ทำแบบทดสอบหลังเรียน</a></div>
+              <a class="btn btn-secondary" id="npbutton" style="display: none;" href="index.php?ch&choice_id=<?php echo $row_watch['choice_id'];?>&user_id=<?php echo $_SESSION['UserID'];?>&aff=aff">ทำแบบทดสอบหลังเรียน</a></div>
             </div>
           </div>
         </div>
       <?php } ?>
       <!-- footer -->
-      <footer class="page-footer font-small default-color" >
 
-        <!-- Copyright -->
-        <div class="footer-copyright text-center py-3 ">
-          © 2019 Copyright: RMUTK 
-
-        </div>
-        <!-- Copyright -->
-
-      </footer>
     </div>
+
+
   </body>
 
   </html>

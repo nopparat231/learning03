@@ -1,21 +1,3 @@
-<?php session_start();?>
-<html>
-
-<head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>สื่อการเรียนรู้</title>
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
-  <!-- Bootstrap core CSS -->
-  <link href="MDBcss/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Material Design Bootstrap -->
-  <link href="MDBcss/css/mdb.min.css" rel="stylesheet">
-  <!-- Your custom styles (optional) -->
-  <link href="MDBcss/css/style.css" rel="stylesheet">
-</head>
 
 <style>
   /* The container */
@@ -83,12 +65,8 @@
   }
 </style>
 
-
-</head>
-
-<?php include 'conn.php'; ?>
 <?php 
-
+include 'conn.php';
 $choice_id = $_GET['choice_id'];
 $user_id = $_GET['user_id'];
 
@@ -103,17 +81,9 @@ $resultN=mysqli_fetch_array($db_queryN);
 
 ?>
 
-<body style="background-color: #FFF7F7">
-
-  <div  class="container" >
-     <?php include 'navbar.php'; ?>
-<div class="col-md-12" style="background-color: #FFFEF0">
+<div class="col-12">
   
    
-
-
-   
-
      <div class="py-2">
       <div class="container">
         <div class="row">
@@ -135,7 +105,7 @@ $resultN=mysqli_fetch_array($db_queryN);
         </div>
       </div>
     </div>
-    <form name="form1" method="get" action="">
+    <form name="form1" method="get" action="choice.php">
       <div class="py-3" style="">
         <div class="container">
           <div class="row">
@@ -229,6 +199,9 @@ $resultN=mysqli_fetch_array($db_queryN);
   </div>
 </div>
 </form>
+
+</div>
+</div>
 <?php if (isset($_GET['bf'])) {
   bf();
 }elseif (isset($_GET['af'])) {
@@ -274,7 +247,7 @@ function bf(){
 
   <script type="text/javascript">
 
-    var $ws = 'watch.php?choice_id=<?php echo $choice_id ?>&user_id=<?php echo $user_id ?>';
+    var $ws = 'index.php?wa&choice_id=<?php echo $choice_id ?>&user_id=<?php echo $user_id ?>';
 
     setTimeout(function () { 
       swal({
@@ -349,12 +322,3 @@ function bf(){
 
       </script>
     <?php } ?>
-
-
-  </div>
-  <?php include 'footer.php'; ?>
-  </div>
-
-</body>
-
-</html>

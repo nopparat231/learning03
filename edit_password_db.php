@@ -1,7 +1,7 @@
 
 <meta charset="UTF-8" />
 
-<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
 
@@ -10,24 +10,14 @@
 include('conn.php');  //ไฟล์เชื่อมต่อกับ database ที่เราได้สร้างไว้ก่อนหน้าน้ี
 
 	//สร้างตัวแปรเก็บค่าที่รับมาจากฟอร์ม
-$Firstname = $_REQUEST["Firstname"];
-$Lastname = $_REQUEST["Lastname"];
 
+$Password = $_REQUEST["Password"];
 
-$email = $_REQUEST["email"];
-$phone = $_REQUEST["phone"];
 $id = $_REQUEST["id"];
 
 
 
-$sql ="UPDATE user SET 
-
-Firstname='$Firstname',
-Lastname='$Lastname',
-email='$email',
-phone='$phone'
-WHERE id=$id
-";
+$sql ="UPDATE user SET Password='$Password' WHERE id=$id ";
 
 $result = mysqli_query($con,$sql) or die("Error in query : $sql" .mysqli_error());
 
@@ -39,7 +29,7 @@ mysqli_close($con);
 
 	<script type="text/javascript">
 
-		var $ws = 'index.php?editprof&user_id=<?php echo $id ?>';
+		var $ws = 'index.php?editpas&user_id=<?php echo $id ?>';
 
 		setTimeout(function () { 
 			swal({
@@ -62,7 +52,7 @@ mysqli_close($con);
 
 		<script type="text/javascript">
 
-			var $ws = 'editprofile.php?user_id=<?php echo $id ?>';
+			var $ws = 'index.php?editpas&user_id=<?php echo $id ?>';
 
 			setTimeout(function () { 
 				swal({
