@@ -83,90 +83,106 @@ $resultN=mysqli_fetch_array($db_queryN);
 
 <div class="col-12">
   
-   
-     <div class="py-2">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12" >
-            <h1 class="text-center">
-              <b>
+ 
+ <div class="py-2">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12" >
+        <h1 class="text-center">
+          <b>
 
-                <?php if (isset($_GET['bff'])){ ?>
-                  แบบทดสอบก่อนเรียน <?php echo $resultN['choice_name']; ?>
-                <?php }elseif(isset($_GET['aff'])){ ?>
-                  แบบทดสอบหลังเรียน <?php echo $resultN['choice_name']; ?>
-                <?php }elseif (isset($_GET['af'])) { ?>
-                  เฉลยแบบทดสอบ <?php echo $resultN['choice_name']; ?>
-                <?php } ?>
-                <hr>
-              </b>
-            </h1>
-          </div>
-        </div>
+            <?php if (isset($_GET['bff'])){ ?>
+              แบบทดสอบก่อนเรียน <?php echo $resultN['choice_name']; ?>
+            <?php }elseif(isset($_GET['aff'])){ ?>
+              แบบทดสอบหลังเรียน <?php echo $resultN['choice_name']; ?>
+            <?php }elseif (isset($_GET['af'])) { ?>
+              เฉลยแบบทดสอบ <?php echo $resultN['choice_name']; ?>
+            <?php } ?>
+            <hr>
+          </b>
+        </h1>
       </div>
     </div>
-    <form name="form1" method="get" action="choice.php">
-      <div class="py-3" style="">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-2">
-            </div>
-            <div class="col-md-10">
-              <?php 
+  </div>
+</div>
+<form name="form1" method="get" action="choice.php">
+  <div class="py-3" style="">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-10">
+          <?php 
 
-              if (isset($_GET['af'])) {
-                include 'answer.php';
-              }else{
+          if (isset($_GET['af'])) { ?>
 
-               ?>
-               <?php
+            <head>
+              <meta charset="utf-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+              <meta http-equiv="x-ua-compatible" content="ie=edge">
+              <title>สื่อการเรียนรู้</title>
+              <!-- Font Awesome -->
+              <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+              <!-- Bootstrap core CSS -->
+              <link href="MDBcss/css/bootstrap.min.css" rel="stylesheet">
+              <!-- Material Design Bootstrap -->
+              <link href="MDBcss/css/mdb.min.css" rel="stylesheet">
+              <!-- Your custom styles (optional) -->
+              <link href="MDBcss/css/style.css" rel="stylesheet">
+            </head>
+            <?php
+            include 'answer.php';
+          }else{
 
-               $i=0;
-               while($result=mysqli_fetch_array($db_query))
-               {
-                $i++;
+           ?>
+           <?php
+
+           $i=0;
+           while($result=mysqli_fetch_array($db_query))
+           {
+            $i++;
 
 
-                $re = $result['answer'];
-                $arran = "answer[$re]";
+            $re = $result['answer'];
+            $arran = "answer[$re]";
 
-                ?>
-                <input name="id" type="hidden" value="<?php echo $result['id']; ?>">
-                <input name="id<?php echo $i;?>" type="hidden" value="<?php echo $result['id']; ?>">
-                <h3><?php echo $i." ).   ".$result["question"];?></h3>
-                <input type="hidden" name="line" value="<?=$i;?>">
+            ?>
+            <input name="id" type="hidden" value="<?php echo $result['id']; ?>">
+            <input name="id<?php echo $i;?>" type="hidden" value="<?php echo $result['id']; ?>">
+            <h3><?php echo $i." ).   ".$result["question"];?></h3>
+            <input type="hidden" name="line" value="<?=$i;?>">
 
-                <ol>
+            <ol>
 
-                  <label class="container"><h5><?php echo $result["c1"];?>
-                  <input type="radio" class="form-check-input" id="radiobtn" name="c<?php echo $i;?>" value="1" required >
-                  <span class="checkmark"></span></h5>
-                </label>
-
-                <label class="container"><h5><?php echo $result["c2"];?>
-                <input type="radio" class="form-check-input" id="radiobtn" name="c<?php echo $i;?>" value="2">
-                <span class="checkmark"></span></h5>
-              </label>
-
-              <label class="container"><h5><?php echo $result["c3"];?>
-              <input type="radio" class="form-check-input" id="radiobtn" name="c<?php echo $i;?>" value="3">
+              <label class="container"><h5><?php echo $result["c1"];?>
+              <input type="radio" class="form-check-input" id="radiobtn" name="c<?php echo $i;?>" value="1" required >
               <span class="checkmark"></span></h5>
-
             </label>
-            <label class="container"><h5><?php echo $result["c4"];?>
-            <input type="radio" class="form-check-input" id="radiobtn" name="c<?php echo $i;?>" value="4">
+
+            <label class="container"><h5><?php echo $result["c2"];?>
+            <input type="radio" class="form-check-input" id="radiobtn" name="c<?php echo $i;?>" value="2">
             <span class="checkmark"></span></h5>
           </label>
 
-          <input name="answer<?php echo $i;?>" type="hidden" value="<?php echo $result['answer'];?>">
-        </ol>
+          <label class="container"><h5><?php echo $result["c3"];?>
+          <input type="radio" class="form-check-input" id="radiobtn" name="c<?php echo $i;?>" value="3">
+          <span class="checkmark"></span></h5>
+
+        </label>
+        <label class="container"><h5><?php echo $result["c4"];?>
+        <input type="radio" class="form-check-input" id="radiobtn" name="c<?php echo $i;?>" value="4">
+        <span class="checkmark"></span></h5>
+      </label>
+
+      <input name="answer<?php echo $i;?>" type="hidden" value="<?php echo $result['answer'];?>">
+    </ol>
 
 
-        <hr>
+    <hr>
 
-      <?php } ?>
-    <?php   } ?>
-  </div>
+  <?php } ?>
+<?php   } ?>
+</div>
 </div>
 </div>
 </div>
@@ -189,7 +205,7 @@ $resultN=mysqli_fetch_array($db_queryN);
     <div class="row">
       <div class="col-md-12 text-center">
         <?php if (isset($_GET['af'])) { ?>
-         <a href="score.php?user_id=<?php echo $user_id ?>" class="btn btn-secondary" type="button" >ดูคะแนนรวม</a>
+         <a href="index.php?sc&user_id=<?php echo $user_id ?>" class="btn btn-secondary" type="button" >ดูคะแนนรวม</a>
        <?php }else{ ?>
         <button class="btn btn-secondary" type="submit" >ส่งคำตอบ</button>
       <?php   } ?>

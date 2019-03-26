@@ -15,7 +15,7 @@ $totalRows_learning = mysqli_num_rows($learning);
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h1 class="text-center">คะแนนผู้ใช้งานทังหมด</h1>
+        <h1 class="text-center">คะแนนผู้ใช้งาน</h1>
         <hr>
       </div>
     </div>
