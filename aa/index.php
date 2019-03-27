@@ -22,7 +22,7 @@ if(session_status() == PHP_SESSION_NONE){
   <!-- Your custom styles (optional) -->
   <link href="MDBcss/css/style.css" rel="stylesheet">
 </head>
- <?php include 'admin/navbar.php'; ?> 
+<?php include 'navbar.php'; ?> 
 <body style="background-color: #FFF7F7">
 
 
@@ -43,7 +43,41 @@ if(session_status() == PHP_SESSION_NONE){
       <div class="col"></div>
       <!--Grid column-->
 
+      <?php 
 
+
+      $in = isset($_REQUEST['in']);
+      $sh = isset($_REQUEST['showchoice']);
+      $shs = isset($_REQUEST['showchoice_s']);
+      $sp = isset($_REQUEST['sp']);
+      $ep = isset($_REQUEST['ep']);
+      $pw = isset($_REQUEST['pw']);
+      $su = isset($_REQUEST['su']);
+      $eu = isset($_REQUEST['eu']);
+      $sc = isset($_REQUEST['sc']);
+      $sco = isset($_REQUEST['sco']);
+
+      if ($in <> '') {
+        include 'index_scoreall.php';
+      }elseif ($sh <> '') {
+        include 'showchoice.php';
+      }elseif ($shs <> '') {
+        include 'showchoice_sub.php';
+      }elseif ($sp <> '') {
+        include 'editprofile_show.php';
+      }elseif ($ep <> '') {
+        include 'editprofile.php';
+      }elseif ($pw <> '') {
+        include 'edit_password.php';
+      }elseif ($su <> '') {
+        include 'show_user.php';
+      }elseif ($eu <> '') {
+        include 'edit_user.php';
+      }elseif ($sc <> '' or $sco <> '') {
+        include 'show_choice_all.php';
+      }
+
+      ?>
 
       <?php
       $regis = isset($_GET['register']);

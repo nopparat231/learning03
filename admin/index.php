@@ -6,112 +6,120 @@ if(session_status() == PHP_SESSION_NONE){
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="https://static.pingendo.com/bootstrap/bootstrap-4.2.1.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>สื่อการเรียนรู้</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="../MDBcss/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="../MDBcss/css/mdb.min.css" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="../MDBcss/css/style.css" rel="stylesheet">
 </head>
-
-<body>
-
-  <?php include 'navbar.php'; ?>
-
-  <div class="py-2">
-    <div class="container">
-      <div class="row">
-
-        <?php include 'menu.php'; ?>
-        <?php include '../conn.php'; ?>
-
-        <?php include 'datatables.php'; ?>
-
-        <body>
-
-          <?php 
-
-          $in = isset($_REQUEST['in']);
-          $sh = isset($_REQUEST['showchoice']);
-          $shs = isset($_REQUEST['showchoice_s']);
-          $sp = isset($_REQUEST['sp']);
-          $ep = isset($_REQUEST['ep']);
-          $pw = isset($_REQUEST['pw']);
-          $su = isset($_REQUEST['su']);
-          $eu = isset($_REQUEST['eu']);
-          $sc = isset($_REQUEST['sc']);
-          $sco = isset($_REQUEST['sco']);
-
-          if ($in <> '') {
-            include 'index_scoreall.php';
-          }elseif ($sh <> '') {
-            include 'showchoice.php';
-          }elseif ($shs <> '') {
-            include 'showchoice_sub.php';
-          }elseif ($sp <> '') {
-            include 'editprofile_show.php';
-          }elseif ($ep <> '') {
-            include 'editprofile.php';
-          }elseif ($pw <> '') {
-            include 'edit_password.php';
-          }elseif ($su <> '') {
-            include 'show_user.php';
-          }elseif ($eu <> '') {
-            include 'edit_user.php';
-          }elseif ($sc <> '' or $sco <> '') {
-            include 'show_choice_all.php';
-          }else{ ?>
+<?php include 'navbar.php'; ?> 
+<body style="background-color: #FFF7F7">
 
 
-            <div class="col-md-9 bg-light">
-              <div class="embed-responsive embed-responsive-16by9">
-               <iframe width="560" height="315" src="https://www.youtube.com/embed/HnPOLQvMm0E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-             </div>
-             <br>
-             <font color="red">
-              <h4 class="">คำแนะนำ </h4>
-              <h5>
-                <ol class="">
-                  <li>ระบบมีมาตราการเพื่อป้องกันข้อมูลส่วนบุคคล ขอให้ท่านได้ศึกษาและปฏิบัติตามขั้นตอนตามลำดับ</li>
-                  <li>ท่านต้องลงทะเบียนและใช้รหัสผ่านในการเข้าสู่ระบบ</li>
-                  <li>ควรเป็นผู้ทำรายการทุกขั้นตอนด้วยตัวเองและรักษารหัสผ่านเป็นความลับเพื่อป้องกันการแอบอ้างการเข้าสู่ระบบ</li>
-                  <li>ผู้ที่ยังไม่สมัครเป็นสมาชิกให้กดปุ่ม สมัครสมาชิก สำหรับผู้ที่สมัครเป็นสมาชิกให้กดปุ่ม เข้าสู่ระบบ เพื่อทำการ Login เข้าสู่ระบบ</li>
 
-                </ol>
-              </h5>
-            </font>
-            <br><br><br><br><br><br>
-          </div>
+  <div class="container" >
 
 
+    <div class="row" style="background-color: #FFFEF0" >
+
+      <?php //include 'menu.php'; ?>
+      <?php include '../conn.php'; ?>
+
+      <?php include 'datatables.php'; ?>
+
+      <body>
+
+        <!--Grid row-->
+        <div class="col"></div>
+        <!--Grid column-->
+        <?php 
+
+        $in = isset($_REQUEST['in']);
+        $sh = isset($_REQUEST['showchoice']);
+        $shs = isset($_REQUEST['showchoice_s']);
+        $sp = isset($_REQUEST['sp']);
+        $ep = isset($_REQUEST['ep']);
+        $pw = isset($_REQUEST['pw']);
+        $su = isset($_REQUEST['su']);
+        $eu = isset($_REQUEST['eu']);
+        $sc = isset($_REQUEST['sc']);
+        $sco = isset($_REQUEST['sco']);
+
+        if ($in <> '') {
+          include 'index_scoreall.php';
+        }elseif ($sh <> '') {
+          include 'showchoice.php';
+        }elseif ($shs <> '') {
+          include 'showchoice_sub.php';
+        }elseif ($sp <> '') {
+          include 'editprofile_show.php';
+        }elseif ($ep <> '') {
+          include 'editprofile.php';
+        }elseif ($pw <> '') {
+          include 'edit_password.php';
+        }elseif ($su <> '') {
+          include 'show_user.php';
+        }elseif ($eu <> '') {
+          include 'edit_user.php';
+        }elseif ($sc <> '' or $sco <> '') {
+          include 'show_choice_all.php';
+        }else{ ?>
+
+          <!-- Video -->
           <?php
-        }
+          $cff = isset($_GET['cff']);
+          $url = 'https://www.youtube.com/watch?v=aqDmiAhju78';
+          preg_match('/[\\?\\&]v=([^\\?\\&]+)/', $url, $matches);
+          $id = $matches[1];
+          $width = '800px';
+          $height = '450px';
+          ?>
+          <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
+            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<?php echo $id ?>" allowfullscreen></iframe>
+          </div>
+          <br><br><br>
+        </div>
 
-        ?>
 
-      </div>
+        <?php
+      }
+
+      ?>
+      
+      <!--Grid column-->
+
+
+      <div class="col"></div>
     </div>
   </div>
-</div>
 
-<?php if ($eu <> ''): ?>
+  <!--Grid row-->
 
 
-    <?php else: ?>
-      <style>
-        .footer {
-         position: fixed;
-         bottom: 0;
-         width: 100%;
-         color: white;
-         text-align: center;
-       }
-     </style>
-     
-   <?php endif ?>
-<?php include 'footer_admin.php'; ?>
-   
- </body>
 
- </html>
+
+  <!-- footer -->
+  <?php include 'footer.php'; ?>
+
+  <!-- SCRIPTS -->
+  <!-- JQuery -->
+  <script type="text/javascript" src="../MDBcss/js/jquery-3.3.1.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="../MDBcss/js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="../MDBcss/js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="../MDBcss/js/mdb.min.js"></script>
+</body>
+
+</html>

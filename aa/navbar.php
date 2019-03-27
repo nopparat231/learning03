@@ -20,46 +20,25 @@
       </li>
 
       <?php elseif(isset($_SESSION["Userlevel"]) == "A"): ?>
-      
+        <li class="nav-item">
+          <a href="index.php?learning" class="nav-link">ทบเรียน</a>
+        </li>
         <!-- Dropdown -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
           aria-expanded="false">ข้อมูลผู้ใช้</a>
           <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="index.php?editprofs&user_id=<?php echo($_SESSION["UserID"]); ?>">แก้ไขข้อมูล</a>
-            <a class="dropdown-item" href="index.php?editpas&user_id=<?php echo($_SESSION["UserID"]); ?>">เปลี่ยนรหัสผ่าน</a>
+            <a class="dropdown-item" href="../index.php?editprofs&user_id=<?php echo($_SESSION["UserID"]); ?>">แก้ไขข้อมูล</a>
+            <a class="dropdown-item" href="../index.php?editpas&user_id=<?php echo($_SESSION["UserID"]); ?>">เปลี่ยนรหัสผ่าน</a>
             
           </div>
         </li>
         <li class="nav-item">
           <a href="../index.php?scl" class="nav-link">คะแนนผู้ใช้งานทั้งหมด</a>
-
-        </li>
-        <li class="nav-item">
-          <a href="admin/index.php?su"  class="nav-link">จัดการผู้ใช้ </a>
         </li>
 
-        <li class="nav-item">
-          <a href="admin/index.php?sc"  class="nav-link">จัดการแบบทดสอบ </a>
-        </li>
-
-        <?php elseif(isset($_SESSION["Userlevel"]) == "M"): ?>
-          <li class="nav-item">
-            <a href="index.php?learning" class="nav-link">ทบเรียน</a>
-          </li>
-          <!-- Dropdown -->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">ข้อมูลผู้ใช้</a>
-            <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="index.php?editprofs&user_id=<?php echo($_SESSION["UserID"]); ?>">แก้ไขข้อมูล</a>
-              <a class="dropdown-item" href="index.php?editpas&user_id=<?php echo($_SESSION["UserID"]); ?>">เปลี่ยนรหัสผ่าน</a>
-              <a class="dropdown-item" href="index.php?sc&user_id=<?php echo($_SESSION["UserID"]); ?>">คะแนนผู้ใช้งาน</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a href="index.php?scl" class="nav-link">คะแนนผู้ใช้งานทั้งหมด</a>
-          </li>
+        <a href="index.php?su" class="border-0 list-group-item d-flex justify-content-between align-items-center list-group-item-action">จัดการผู้ใช้ <i class="fa fa-users text-muted fa-lg"></i></a>
+        <a href="index.php?sc" class="border-0 list-group-item d-flex justify-content-between align-items-center list-group-item-action">จัดการแบบทดสอบ <i class="fa fa-pencil-square-o text-muted fa-lg"></i></a>
 
       <?php endif ?>
 
