@@ -1,31 +1,31 @@
+
 <?php 
 
-$choice_id = $_GET['choice_id'];
-
-$query_learning = "SELECT * FROM choice as c , user as u, user_learning as l WHERE c.choice_id = '$choice_id' and l.choice_id = c.choice_id and l.user_id = u.id order by l.user_learning_af desc" ;
+$query_learning = "SELECT * FROM choice as c , user as u, user_learning as l where l.choice_id = c.choice_id and l.user_id = u.id order by l.user_learning_af desc" ;
 $learning = mysqli_query($con,$query_learning) or die(mysqli_error());
 $row_learning = mysqli_fetch_assoc($learning);
 $totalRows_learning = mysqli_num_rows($learning);
 
 
 ?>
-
-<div class="col-md-9 bg-light">
+<div class="col-12">
  <div class="py-2">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h1 class="text-center" >คะแนนผู้ใช้งานทั้งหมด</h1>
+        <h1 class="text-center">คะแนนผู้ใช้งานทังหมด</h1>
+        <hr>
       </div>
     </div>
   </div>
 </div>
+
 <div class="py-3">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
         <div class="table-responsive text-center">
-          <table class="display" id="example">
+          <table class="table table-striped table-borderless">
            <?php if ($totalRows_learning > 0) {?>
 
             <thead>
@@ -35,7 +35,7 @@ $totalRows_learning = mysqli_num_rows($learning);
                 <th scope="col">นามสกุล</th>
                 <th scope="col">บทเรียน</th>
                 <th scope="col">คะแนนก่อนเรียน</th>
-                <th scope="col" contenteditable="true">คะแนนหลังเรียน</th>
+                <th scope="col">คะแนนหลังเรียน</th>
               </tr>
             </thead>
             <tbody>
@@ -61,7 +61,7 @@ $totalRows_learning = mysqli_num_rows($learning);
             </tbody>
           </table>
         <?php }else {
-          echo "<h3> <br /> ยังไม่มีคะแนน </h3>";
+          echo "<h3> ยังไม่มีคะแนน </h3>";
         }
 
         mysqli_free_result($learning);?>
@@ -71,11 +71,5 @@ $totalRows_learning = mysqli_num_rows($learning);
   </div>
 </div>
 </div>
-<div class="py-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12"></div>
-    </div>
-  </div>
-</div>
+
 </div>
