@@ -1,5 +1,6 @@
 
 <style>
+
   /* The container */
   .container {
     display: block;
@@ -248,7 +249,7 @@ function bf(){
   include 'conn.php';
 
   $user_learning_af = 'ยังไม่ทำ';
-  $sql1 = "INSERT INTO user_learning VALUES(null, '$choice_id', '$user_id', '$score','$user_learning_af')";
+  $sql1 = "INSERT INTO user_learning (choice_id, user_id , user_learning_bf , user_learning_af , user_learning_status) VALUES('$choice_id', '$user_id', '$score','$user_learning_af' , '0')";
 
   $result1 = mysqli_query($con, $sql1) or die ("Error in query: $sql1 " . mysqli_error());
 

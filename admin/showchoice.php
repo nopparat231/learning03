@@ -26,7 +26,7 @@ $totalRows_learning = mysqli_num_rows($learning);
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <div class="table-responsive text-center">
+       
           <br>
 
           <?php include 'add_choice.php'; ?>
@@ -35,7 +35,7 @@ $totalRows_learning = mysqli_num_rows($learning);
 
 
           <a href="showchoice.php" class="btn btn-outline-success my-2 my-sm-0" data-toggle='modal' data-target='#addchoiceModal'>เพิ่มหมวดหมู่</a>
-          <table class="display" id="example">
+          <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
            <?php if ($totalRows_learning > 0) {?>
 
             <thead>
@@ -88,7 +88,7 @@ $totalRows_learning = mysqli_num_rows($learning);
 
         mysqli_free_result($learning);?>
 
-      </div>
+ 
     </div>
   </div>
 </div>

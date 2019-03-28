@@ -18,7 +18,7 @@ $totalRows_model = mysqli_num_rows($model);
 <?php if (isset($_REQUEST['sco']) <> ''): ?>
 
 
-  <div class="col-md-9 bg-light">
+  <div class="col-12">
    <div class="py-2">
     <div class="container">
       <div class="row">
@@ -33,7 +33,7 @@ $totalRows_model = mysqli_num_rows($model);
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <div class="table-responsive text-center">
+         
             <br>
 
             <?php include 'add_choice.php'; ?>
@@ -42,7 +42,8 @@ $totalRows_model = mysqli_num_rows($model);
 
 
             <a href="showchoice.php" class="btn btn-outline-success my-2 my-sm-0" data-toggle='modal' data-target='#addchoiceModal'>เพิ่มหมวดหมู่</a>
-            <table class="display" id="example">
+            <br><br>
+            <table  id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
              <?php if ($totalRows_model > 0) {?>
 
               <thead>
@@ -82,15 +83,15 @@ $totalRows_model = mysqli_num_rows($model);
                       <iframe width="200" height="100" src="https://www.youtube.com/embed/<?php echo $id; ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </td>
                     <td>
-                      <a href="edit_choice.php?choice_id=<?php echo $row_model['choice_id'];?>" class="btn btn-outline-warning my-2 my-sm-0" ><i class="fa fa-pencil-square-o text-muted fa-mg"></i></a>
+                      <a href="index.php?ec&ec&choice_id=<?php echo $row_model['choice_id'];?>" class="btn btn-outline-warning my-2 my-sm-0" ><img src="../img/edit.png" width="20"></a>
                     </td>
                     <?php if ($row_model['choice_status'] <> 1 ): ?>
                      <td> 
-                      <a href="del_choice.php?choice_id=<?php echo $row_model['choice_id'];?>&st=1" class="btn btn-outline-danger my-2 my-sm-0" onClick="return confirm('ยืนยันการยกเลิกหมวดหมู่');"><i class="fa fa-window-close-o text-muted fa-mg"></i></a>
+                      <a href="del_choice.php?choice_id=<?php echo $row_model['choice_id'];?>&st=1" class="btn btn-outline-danger my-2 my-sm-0" onClick="return confirm('ยืนยันการยกเลิกหมวดหมู่');"><img src="../img/delete.png" width="20"></a>
                     </td>
                     <?php else: ?>
                       <td> 
-                        <a href="del_choice.php?choice_id=<?php echo $row_model['choice_id'];?>&st=0" class="btn btn-outline-info my-2 my-sm-0" onClick="return confirm('ยืนยันการใช้งานหมวดหมู่');"><i class="fa fa fa-repeat text-muted fa-mg"></i></a>
+                        <a href="del_choice.php?choice_id=<?php echo $row_model['choice_id'];?>&st=0" class="btn btn-outline-info my-2 my-sm-0" onClick="return confirm('ยืนยันการใช้งานหมวดหมู่');"><i class="fas fa-redo"></i></a>
                       </td>
                     <?php endif ?>
 
@@ -109,7 +110,7 @@ $totalRows_model = mysqli_num_rows($model);
 
           mysqli_free_result($model);?>
 
-        </div>
+       
       </div>
     </div>
   </div>
@@ -128,7 +129,7 @@ $totalRows_model = mysqli_num_rows($model);
 
 <?php else: ?>
 
-  <div class="col-md-9 bg-light">
+  <div class="col-12">
    <div class="py-2">
     <div class="container">
       <div class="row">
@@ -143,16 +144,16 @@ $totalRows_model = mysqli_num_rows($model);
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <div class="table-responsive text-center">
-            <br>
+        
+           
 
             <?php include 'add_choice.php'; ?>
 
-
-
-
             <a href="showchoice.php" class="btn btn-outline-success my-2 my-sm-0" data-toggle='modal' data-target='#addchoiceModal'>เพิ่มหมวดหมู่</a>
-            <table class="display" id="example">
+
+<br><br>
+
+            <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
              <?php if ($totalRows_model > 0) {?>
 
               <thead>
@@ -182,29 +183,29 @@ $totalRows_model = mysqli_num_rows($model);
                     <td><?php echo $row_model['choice_detail']; ?></td>
 
                     <td>
-                      <a href="edit_choice.php?choice_id=<?php echo $row_model['choice_id'];?>" class="btn btn-outline-warning my-2 my-sm-0" ><i class="fa fa-pencil-square-o text-muted fa-mg"></i></a>
+                      <a href="index.php?ec&choice_id=<?php echo $row_model['choice_id'];?>" class="btn btn-outline-warning my-2 my-sm-0" ><img src="../img/edit.png" width="20"></a>
                     </td>
 
                      <?php if ($row_model['choice_status'] <> 1 ): ?>
                      <td> 
-                      <a href="del_choice.php?choice_id=<?php echo $row_model['choice_id'];?>&st=1" class="btn btn-outline-danger my-2 my-sm-0" onClick="return confirm('ยืนยันการยกเลิกหมวดหมู่');"><i class="fa fa-window-close-o text-muted fa-mg"></i></a>
+                      <a href="del_choice.php?choice_id=<?php echo $row_model['choice_id'];?>&st=1" class="btn btn-outline-danger my-2 my-sm-0" onClick="return confirm('ยืนยันการยกเลิกหมวดหมู่');"><img src="../img/delete.png" width="20"></a>
                     </td>
                     <?php else: ?>
                       <td> 
-                        <a href="del_choice.php?choice_id=<?php echo $row_model['choice_id'];?>&st=0" class="btn btn-outline-info my-2 my-sm-0" onClick="return confirm('ยืนยันการใช้งานหมวดหมู่');"><i class="fa fa fa-repeat text-muted fa-mg"></i></a>
+                        <a href="del_choice.php?choice_id=<?php echo $row_model['choice_id'];?>&st=0" class="btn btn-outline-info my-2 my-sm-0" onClick="return confirm('ยืนยันการใช้งานหมวดหมู่');"><i class="fas fa-redo"></i></a>
                       </td>
                     <?php endif ?>
 
                     <td>
-                      <a href="index.php?sco" class="btn btn-outline-warning my-2 my-sm-0" ><i class="fa fa-youtube-play text-muted fa-mg"></i></a>
+                      <a href="index.php?sco" class="btn btn-outline-warning my-2 my-sm-0" ><img src="../img/play.png" width="20"></a>
                     </td>
 
                     <td>
-                      <a href="index.php?showchoice_s&choice_id=<?php echo $row_model['choice_id'];?>" class="btn btn-outline-warning my-2 my-sm-0" ><i class="fa fa-file-text-o text-muted fa-mg"></i></a>
+                      <a href="index.php?showchoice_s&choice_id=<?php echo $row_model['choice_id'];?>" class="btn btn-outline-warning my-2 my-sm-0" ><img src="../img/score.png" width="25"></a>
                     </td>
 
                     <td>
-                      <a href="index.php?in&choice_id=<?php echo $row_model['choice_id']; ?>" class="btn btn-outline-warning my-2 my-sm-0" ><i class="fa fa-list-ol text-muted fa-mg"></i></a>
+                      <a href="index.php?in&choice_id=<?php echo $row_model['choice_id']; ?>" class="btn btn-outline-warning my-2 my-sm-0" ><img src="../img/test.png" width="20"></a>
                     </td>
 
                   </tr>
@@ -221,7 +222,7 @@ $totalRows_model = mysqli_num_rows($model);
 
           mysqli_free_result($model);?>
 
-        </div>
+       
       </div>
     </div>
   </div>

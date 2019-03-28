@@ -24,8 +24,8 @@ $totalRows_learning = mysqli_num_rows($learning);
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <div class="table-responsive text-center">
-          <table class="table table-striped table-borderless">
+        
+          <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
            <?php if ($totalRows_learning > 0) {?>
 
             <thead>
@@ -36,6 +36,7 @@ $totalRows_learning = mysqli_num_rows($learning);
                 <th scope="col">บทเรียน</th>
                 <th scope="col">คะแนนก่อนเรียน</th>
                 <th scope="col">คะแนนหลังเรียน</th>
+                <th scope="col">ลบ</th>
               </tr>
             </thead>
             <tbody>
@@ -52,24 +53,33 @@ $totalRows_learning = mysqli_num_rows($learning);
                   <td><?php echo $row_learning['choice_name']; ?></td>
                   <td><?php echo $row_learning['user_learning_bf']; ?></td>
                   <td><?php echo $row_learning['user_learning_af']; ?></td>
-                </tr>
+                  <?php if ($row_learning['user_learning_status'] <> 1 ): ?>
+                   <td> 
+                    <a href="del_index_scoreall.php?user_learning_id=<?php echo $row_learning['user_learning_id'];?>&st=1" class="btn btn-outline-danger my-2 my-sm-0" onClick="return confirm('ยืนยันการยกเลิกหมวดหมู่');"><img src="../img/delete.png" width="20"></a>
+                  </td>
+                  <?php else: ?>
+                    <td> 
+                      <a href="del_index_scoreall.php?user_learning_id=<?php echo $row_learning['user_learning_id'];?>&st=0" class="btn btn-outline-info my-2 my-sm-0" onClick="return confirm('ยืนยันการใช้งานหมวดหมู่');"><i class="fas fa-redo"></i></a>
+                    </td>
+                      <?php endif ?>
+                  </tr>
 
-                <?php 
-                $i += 1;
-              } while ($row_learning = mysqli_fetch_assoc($learning)); ?>
+                  <?php 
+                  $i += 1;
+                } while ($row_learning = mysqli_fetch_assoc($learning)); ?>
 
-            </tbody>
-          </table>
-        <?php }else {
-          echo "<h3> ยังไม่มีคะแนน </h3>";
-        }
+              </tbody>
+            </table>
+          <?php }else {
+            echo "<h3> ยังไม่มีคะแนน </h3>";
+          }
 
-        mysqli_free_result($learning);?>
+          mysqli_free_result($learning);?>
 
+       
       </div>
     </div>
   </div>
-</div>
 </div>
 
 </div>

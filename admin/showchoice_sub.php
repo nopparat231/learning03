@@ -12,7 +12,7 @@ $totalRows_learning = mysqli_num_rows($learning);
 ?>
 
 
-<div class="col-md-9 bg-light">
+<div class="col-12">
  <div class="py-2">
   <div class="container">
     <div class="row">
@@ -23,12 +23,13 @@ $totalRows_learning = mysqli_num_rows($learning);
   </div>
 </div>
 
-<div class="table-responsive text-center">
+
   <br>
   <?php include 'add_choice_sub.php'; ?>
   
   <a href="showchoice_sub.php" class="btn btn-outline-success my-2 my-sm-0"  data-toggle='modal' data-target='#addchoicesubModal'>เพิ่มคำถาม</a>
-  <table class="display" id="example">
+  <br><br>
+  <table  id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
    <?php if ($totalRows_learning > 0) {?>
 
     <thead>
@@ -71,15 +72,15 @@ $totalRows_learning = mysqli_num_rows($learning);
           <td><?php echo $row_learning['answer']; ?></td>
 
           
-          <td><a href="edit_choice_sub.php?choice_id=<?php echo $choice_id; ?>&id=<?php echo $row_learning['id'];?>" class="btn btn-outline-warning my-2 my-sm-0" ><i class="fa fa-pencil-square-o text-muted fa-mg"></a></td>
+          <td><a href="edit_choice_sub.php?choice_id=<?php echo $choice_id; ?>&id=<?php echo $row_learning['id'];?>" class="btn btn-outline-warning my-2 my-sm-0" ><img src="../img/edit.png" width="20"></a></td>
           
           <?php if ($row_learning['status'] <> 1 ): ?>
             <td>
-              <a href="del_choice_sub.php?choice_id=<?php echo $choice_id; ?>&id=<?php echo $row_learning['id'];?>&st=1" class="btn btn-outline-danger my-2 my-sm-0" onClick="return confirm('ยืนยันการยกเลิกคำถาม');"><i class="fa fa-window-close-o text-muted fa-mg"></i></a>
+              <a href="del_choice_sub.php?choice_id=<?php echo $choice_id; ?>&id=<?php echo $row_learning['id'];?>&st=1" class="btn btn-outline-danger my-2 my-sm-0" onClick="return confirm('ยืนยันการยกเลิกคำถาม');"><img src="../img/delete.png" width="20"></a>
             </td>
             <?php else: ?>
              <td>
-              <a href="del_choice_sub.php?choice_id=<?php echo $choice_id; ?>&id=<?php echo $row_learning['id'];?>&st=0" class="btn btn-outline-info my-2 my-sm-0" onClick="return confirm('ยืนยันการใช้งานคำถาม');"><i class="fa fa fa-repeat text-muted fa-mg"></i></a>
+              <a href="del_choice_sub.php?choice_id=<?php echo $choice_id; ?>&id=<?php echo $row_learning['id'];?>&st=0" class="btn btn-outline-info my-2 my-sm-0" onClick="return confirm('ยืนยันการใช้งานคำถาม');"><i class="fas fa-redo"></i></a>
             </td>
           <?php endif ?>
         </tr>
@@ -96,7 +97,7 @@ $totalRows_learning = mysqli_num_rows($learning);
 
 mysqli_free_result($learning);?>
 
-</div>
+
 
 </div>
 <div class="py-5">

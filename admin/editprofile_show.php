@@ -10,7 +10,11 @@ $num = mysqli_fetch_assoc($result);
 ?>
 <body>
 
-  <div class="col-md-9 bg-light">
+
+
+
+  <div class="col-7">
+
    <div class="py-2">
     <div class="container">
       <div class="row">
@@ -21,6 +25,7 @@ $num = mysqli_fetch_assoc($result);
       </div>
     </div>
   </div>
+
   <div class="py-1">
     <div class="container w-46">
       <div class="row">
@@ -57,15 +62,13 @@ $num = mysqli_fetch_assoc($result);
                           <?php echo($num['phone'])?></div>
                         </div>
                       </div>
-                       <div class="form-group row">
-                      <label class="col-2">วันหมดอายุ<br></label>
-                      <div class="col-10">
-                        <div class="input-group">
-                          
-                           <?php $da = date('d-m-Y',strtotime($num['user_date'])); ?>
-                          <?php echo $da; ?>
-                            
-                            
+                      <div class="form-group row">
+                        <label class="col-2">วันหมดอายุ<br></label>
+                        <div class="col-10">
+                          <div class="input-group">
+                            <?php $da = date('d-m-Y',strtotime($num['user_date'])); ?>
+                            <?php echo $da; ?>
+
                           </div>
                         </div>
                       </div>
@@ -87,6 +90,5 @@ $num = mysqli_fetch_assoc($result);
                 </div>
               </div>
             </div>
-
           </div>
 

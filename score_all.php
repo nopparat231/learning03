@@ -1,7 +1,7 @@
 
 <?php 
 
-$query_learning = "SELECT * FROM choice as c , user as u, user_learning as l where l.choice_id = c.choice_id and l.user_id = u.id order by l.user_learning_af desc" ;
+$query_learning = "SELECT * FROM choice as c , user as u, user_learning as l where l.user_learning_status <> 1 and l.choice_id = c.choice_id and l.user_id = u.id order by l.user_learning_af desc" ;
 $learning = mysqli_query($con,$query_learning) or die(mysqli_error());
 $row_learning = mysqli_fetch_assoc($learning);
 $totalRows_learning = mysqli_num_rows($learning);
@@ -24,7 +24,7 @@ $totalRows_learning = mysqli_num_rows($learning);
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <div class="table-responsive text-center">
+        
           <table class="table table-striped table-borderless">
            <?php if ($totalRows_learning > 0) {?>
 
@@ -67,7 +67,7 @@ $totalRows_learning = mysqli_num_rows($learning);
         mysqli_free_result($learning);?>
 
       </div>
-    </div>
+    
   </div>
 </div>
 </div>

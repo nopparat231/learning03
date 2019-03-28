@@ -19,8 +19,12 @@ if(session_status() == PHP_SESSION_NONE){
   <link href="../MDBcss/css/bootstrap.min.css" rel="stylesheet">
   <!-- Material Design Bootstrap -->
   <link href="../MDBcss/css/mdb.min.css" rel="stylesheet">
+
+  <link href="../MDBcss/css/addons/datatables.min.css" rel="stylesheet">
   <!-- Your custom styles (optional) -->
   <link href="../MDBcss/css/style.css" rel="stylesheet">
+
+
 </head>
 <?php include 'navbar.php'; ?> 
 <body style="background-color: #FFF7F7">
@@ -54,6 +58,10 @@ if(session_status() == PHP_SESSION_NONE){
         $eu = isset($_REQUEST['eu']);
         $sc = isset($_REQUEST['sc']);
         $sco = isset($_REQUEST['sco']);
+        $ec = isset($_REQUEST['ec']);
+        $ecs = isset($_REQUEST['ecs']);
+
+        
 
         if ($in <> '') {
           include 'index_scoreall.php';
@@ -71,8 +79,13 @@ if(session_status() == PHP_SESSION_NONE){
           include 'show_user.php';
         }elseif ($eu <> '') {
           include 'edit_user.php';
+        }elseif ($ec <> '') {
+          include 'edit_choice.php';
+        }elseif ($ecs <> '') {
+          include 'edit_choice_sub.php';
         }elseif ($sc <> '' or $sco <> '') {
           include 'show_choice_all.php';
+          
         }else{ ?>
 
           <!-- Video -->
@@ -120,6 +133,40 @@ if(session_status() == PHP_SESSION_NONE){
   <script type="text/javascript" src="../MDBcss/js/bootstrap.min.js"></script>
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="../MDBcss/js/mdb.min.js"></script>
+
+  <script type="text/javascript" src="../MDBcss/js/addons/datatables.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready( function () {
+      $('#dtBasicExample').DataTable({
+        "oLanguage": {
+          "sEmptyTable":     "ไม่มีข้อมูลในตาราง",
+          "sInfo":           "แสดง _START_ ถึง _END_ จาก _TOTAL_ แถว",
+          "sInfoEmpty":      "แสดง 0 ถึง 0 จาก 0 แถว",
+          "sInfoFiltered":   "(กรองข้อมูล _MAX_ ทุกแถว)",
+          "sInfoPostFix":    "",
+          "sInfoThousands":  ",",
+          "sLengthMenu":     "แสดง _MENU_ แถว",
+          "sLoadingRecords": "กำลังโหลดข้อมูล...",
+          "sProcessing":     "กำลังดำเนินการ...",
+          "sSearch":         "ค้นหา: ",
+          "sZeroRecords":    "ไม่พบข้อมูล",
+          "oPaginate": {
+            "sFirst":    "หน้าแรก",
+            "sPrevious": "ก่อนหน้า",
+            "sNext":     "ถัดไป",
+            "sLast":     "หน้าสุดท้าย"
+          },
+          "oAria": {
+            "sSortAscending":  ": เปิดใช้งานการเรียงข้อมูลจากน้อยไปมาก",
+            "sSortDescending": ": เปิดใช้งานการเรียงข้อมูลจากมากไปน้อย"
+          }
+        }
+      } );
+    } );
+    
+  </script>
+
 </body>
 
 </html>

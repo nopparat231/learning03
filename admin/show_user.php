@@ -11,7 +11,7 @@ $totalRows_user = mysqli_num_rows($user);
 
 ?>
 
-<div class="col-md-9 bg-light">
+<div class="col-12">
 	<div class="py-2">
 		<div class="container">
 			<div class="row">
@@ -26,74 +26,73 @@ $totalRows_user = mysqli_num_rows($user);
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<div class="table-responsive text-center">
-						<br>
+					
+					<br>
 
 
-						<table class="display" id="example">
-							<?php if ($totalRows_user > 0) {?>
+					<table  id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
+						<?php if ($totalRows_user > 0) {?>
 
-								<thead>
+							<thead>
+								<tr class="text-center">
+									<th scope="col" width="5">ลำดับ</th>
+									<th scope="col">ชื่อผู้ใช้</th>
+									<th scope="col">ชื่อ  - สกุล</th>
+									<th scope="col">ข้อมูลติดต่อ</th>
+									<th scope="col">วันหมดอายุ</th>
+									<th scope="col">ประเภท</th>
+
+									<th scope="col" width="5">แก้ไข</th>
+								</tr>
+							</thead>
+							<tbody>
+
+								<?php
+								$i = 1 ;
+								do { ?>
+
+
 									<tr class="text-center">
-										<th scope="col" width="5">ลำดับ</th>
-										<th scope="col">ชื่อผู้ใช้</th>
-										<th scope="col">ชื่อ  - สกุล</th>
-										<th scope="col">ข้อมูลติดต่อ</th>
-										<th scope="col">วันหมดอายุ</th>
-										<th scope="col">ประเภท</th>
 
-										<th scope="col" width="5">แก้ไข</th>
+										<td><?php echo $i ?></td>
+										<td><?php echo $row_user['Username']; ?></td>
+										<td><?php echo $row_user['Firstname'] . "  " . $row_user['Lastname']; ?></td>
+										<td><?php echo " เบอร์โทร " . $row_user['phone'] . " <br /> อีเมล์ " . $row_user['email']; ?></td>
+										<td><?php echo $row_user['user_date']; ?></td>
+										<td>
+											<?php 
+
+											if ($row_user['Userlevel'] == 'A' ){
+												echo "Admin";
+											}elseif ($row_user['Userlevel'] == 'M') {
+												echo "User";
+											}elseif ($row_user['Userlevel'] == 'E') {
+												echo "Expired";
+											}
+
+											?>
+
+										</td>
+
+										<td>
+											<a href="index.php?eu&user_id=<?php echo $row_user['ID'];?>" class="btn btn-outline-warning my-2 my-sm-0" ><img src="../img/edit.png" width="20"></a>
+										</td>
+
 									</tr>
-								</thead>
-								<tbody>
 
-									<?php
-									$i = 1 ;
-									do { ?>
+									<?php 
+									$i += 1;
+								} while ($row_user = mysqli_fetch_assoc($user)); ?>
 
+							</tbody>
+						</table>
+					<?php }else {
+						echo "<h3> ยังไม่มีคะแนน </h3>";
+					}
 
-										<tr class="text-center">
+					mysqli_free_result($user);?>
 
-											<td><?php echo $i ?></td>
-											<td><?php echo $row_user['Username']; ?></td>
-											<td><?php echo $row_user['Firstname'] . "  " . $row_user['Lastname']; ?></td>
-											<td><?php echo " เบอร์โทร " . $row_user['phone'] . " <br /> อีเมล์ " . $row_user['email']; ?></td>
-											<td><?php echo $row_user['user_date']; ?></td>
-											<td>
-												<?php 
-
-												if ($row_user['Userlevel'] == 'A' ){
-													echo "Admin";
-												}elseif ($row_user['Userlevel'] == 'M') {
-													echo "User";
-												}elseif ($row_user['Userlevel'] == 'E') {
-													echo "Expired";
-												}
-
-												?>
-
-											</td>
-
-
-											<td>
-												<a href="index.php?eu&user_id=<?php echo $row_user['ID'];?>" class="btn btn-outline-warning my-2 my-sm-0" ><i class="fa fa-pencil text-muted fa-mg"></i></a>
-											</td>
-
-										</tr>
-
-										<?php 
-										$i += 1;
-									} while ($row_user = mysqli_fetch_assoc($user)); ?>
-
-								</tbody>
-							</table>
-						<?php }else {
-							echo "<h3> ยังไม่มีคะแนน </h3>";
-						}
-
-						mysqli_free_result($user);?>
-
-					</div>
+					
 				</div>
 			</div>
 		</div>

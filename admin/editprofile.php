@@ -1,112 +1,111 @@
 
-<?php 
+<body>
 
-$user_id = $_GET['user_id'];
+  <?php 
+  $user_id = $_GET['user_id'];
 
-$check = "SELECT * FROM user WHERE id = $user_id ";
-$result = mysqli_query($con,$check) or die(mysqli_error());
-$num = mysqli_fetch_assoc($result);
-
-?>
-<div class="col-md-9 bg-light">
- <div class="py-2">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <h1 class="text-center"><b>แก้ไขข้อมูล</b></h1>
-        <hr>
+  $check = "SELECT * FROM user WHERE id = $user_id ";
+  $result = mysqli_query($con,$check) or die(mysqli_error());
+  $num = mysqli_fetch_assoc($result);
+  ?>
+  <div class="col-7">
+   <div class="py-2">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="text-center"><b>แก้ไขข้อมูล</b></h1>
+          <hr>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<div class="py-1">
-  <div class="container w-46">
-    <div class="row">
-      <div class="text-left col-md-12" style="">
-        <form class="" id="c_form-h" action="editprofile_db.php" method="post" >
-          <div class="form-group row">
-            <label class="col-2">ชื่อผู้ใช้</label>
-            <div class="col-10">
-              <div class="input-group">
-                <?php echo($num['Username'])?></div>
-              </div>
-            </div>
-
-            <div class="form-group row"><label class="col-2">ชื่อ</label>
+  <div class="py-1">
+    <div class="container w-46">
+      <div class="row">
+        <div class="text-left col-md-12" style="">
+          <form class="" id="c_form-h" action="editprofile_db.php" method="post" >
+            <div class="form-group row">
+              <label class="col-2">ชื่อผู้ใช้</label>
               <div class="col-10">
                 <div class="input-group">
-                  <input type="text" name="Firstname" class="form-control" id="inlineFormInputGroup" required="กรุณากรอกชื่อ" placeholder="กรุณากรอกชื่อ"  value="<?php echo($num['Firstname'])?>" onkeyup="validate();" minlength="3" maxlength="25" title="ใส่ ก-ฮ หรือ a-z เท่านั้น"></div>
+                  <?php echo($num['Username'])?></div>
                 </div>
               </div>
-              <div class="form-group row"><label class="col-2">นามสกุล</label>
+
+              <div class="form-group row"><label class="col-2">ชื่อ</label>
                 <div class="col-10">
                   <div class="input-group">
-                    <input type="text" name="Lastname" class="form-control" id="inlineFormInputGroup" required="กรุณากรอกนามสกุล" placeholder="กรุณากรอกนามสกุล" value="<?php echo($num['Lastname'])?>"  onkeyup="validate();" minlength="3" maxlength="25" title="ใส่ ก-ฮ หรือ a-z เท่านั้น"></div>
+                    <input type="text" name="Firstname" class="form-control" id="inlineFormInputGroup" required="กรุณากรอกชื่อ" placeholder="กรุณากรอกชื่อ"  value="<?php echo($num['Firstname'])?>" onkeyup="validate();" minlength="3" maxlength="25" title="ใส่ ก-ฮ หรือ a-z เท่านั้น"></div>
                   </div>
                 </div>
-                <div class="form-group row"> <label for="inputmailh" class="col-2 col-form-label">อีเมล์</label>
+                <div class="form-group row"><label class="col-2">นามสกุล</label>
                   <div class="col-10">
-                    <input type="email" name="email" class="form-control" id="inputmailh" required="กรุณากรอกอีเมล์" placeholder="กรุณากรอกอีเมล์"  value="<?php echo($num['email'])?>"> </div>
-                  </div>
-                  <div class="form-group row">
-                    <label class="col-2">เบอร์โทร<br></label>
-                    <div class="col-10">
-                      <div class="input-group">
-                        <input name="phone" class="form-control" id="input-num" required="กรุณากรอกเบอร์โทร" placeholder="กรุณากรอกเบอร์โทร" value="<?php echo($num['phone'])?>" size="10" title="เบอร์โทร 0-9" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                        type="tel"
-                        maxlength = "10" onkeyup="num();"></div>
-                      </div>
+                    <div class="input-group">
+                      <input type="text" name="Lastname" class="form-control" id="inlineFormInputGroup" required="กรุณากรอกนามสกุล" placeholder="กรุณากรอกนามสกุล" value="<?php echo($num['Lastname'])?>"  onkeyup="validate();" minlength="3" maxlength="25" title="ใส่ ก-ฮ หรือ a-z เท่านั้น"></div>
                     </div>
+                  </div>
+                  <div class="form-group row"> <label for="inputmailh" class="col-2 col-form-label">อีเมล์</label>
+                    <div class="col-10">
+                      <input type="email" name="email" class="form-control" id="inputmailh" required="กรุณากรอกอีเมล์" placeholder="กรุณากรอกอีเมล์"  value="<?php echo($num['email'])?>"> </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-2">เบอร์โทร<br></label>
+                      <div class="col-10">
+                        <div class="input-group">
+                          <input name="phone" class="form-control" id="input-num" required="กรุณากรอกเบอร์โทร" placeholder="กรุณากรอกเบอร์โทร" value="<?php echo($num['phone'])?>" size="10" title="เบอร์โทร 0-9" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                          type="tel"
+                          maxlength = "10" onkeyup="num();"></div>
+                        </div>
+                      </div>
 
-                    <input type="hidden" name="id" value="<?php echo($num['ID'])?>">
+                      <input type="hidden" name="id" value="<?php echo($num['ID'])?>">
 
-                    <div class="py-3">
-                      <div class="container">
-                        <div class="row">
-                          <div class="col-md-12 text-center">
-                            <button name="btn" class="btn btn-success text-light mx-1" >ยืนยัน</button>
+                      <div class="py-3">
+                        <div class="container">
+                          <div class="row">
+                            <div class="col-md-12 text-center">
+                              <button name="btn" class="btn btn-success text-light mx-1" >ยืนยัน</button>
 
-                            <a class="btn btn-danger text-light mx-1" href="index.php?sp&user_id=<?php echo $_SESSION["UserID"]; ?>">ยกเลิก</a>
+                              <a class="btn btn-danger text-light mx-1" href="index.php?sp&user_id=<?php echo $_SESSION["UserID"]; ?>">ยกเลิก</a>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </form>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-        </div>
 
+          <script type="text/javascript">
 
-        <script type="text/javascript">
+            function validate() {
+              var element = document.getElementById('input-field');
+              element.value = element.value.replace(/[^a-zA-Zก-๙ @]+/, '');
+            };
 
-          function validate() {
-            var element = document.getElementById('input-field');
-            element.value = element.value.replace(/[^a-zA-Zก-๙ @]+/, '');
-          };
+            function num() {
+              var element = document.getElementById('input-num');
+              element.value = element.value.replace(/[^0-9]+/, '');
+            };
 
-          function num() {
-            var element = document.getElementById('input-num');
-            element.value = element.value.replace(/[^0-9]+/, '');
-          };
+            function user() {
+              var element = document.getElementById('input-user');
+              element.value = element.value.replace(/[^a-zA-Z0-9]+/, '');
+            };
+          </script>
 
-          function user() {
-            var element = document.getElementById('input-user');
-            element.value = element.value.replace(/[^a-zA-Z0-9]+/, '');
-          };
-        </script>
-
-        <script type="text/javascript">
-          function checkPasswordMatch() {
-            var password = $("#txtNewPassword").val();
-            var confirmPassword = $("#txtConfirmPassword").val();
-            if (password != confirmPassword)
-              $("#divCheckPasswordMatch").html("รหัสผ่านไม่ตรงกัน!");
-            else
-              $("#divCheckPasswordMatch").html("รหัสผ่านตรงกัน");
-          }
+          <script type="text/javascript">
+            function checkPasswordMatch() {
+              var password = $("#txtNewPassword").val();
+              var confirmPassword = $("#txtConfirmPassword").val();
+              if (password != confirmPassword)
+                $("#divCheckPasswordMatch").html("รหัสผ่านไม่ตรงกัน!");
+              else
+                $("#divCheckPasswordMatch").html("รหัสผ่านตรงกัน");
+            }
 
           /*
   jQuery document ready.

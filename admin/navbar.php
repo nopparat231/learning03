@@ -1,9 +1,14 @@
-
+<?php
+ini_set('error_reporting', 0);
+ini_set('display_errors', 0);
+?>
 <div class="navb">
 
   <!-- Start your project here-->
   <nav class="navbar navbar-expand-lg navbar-dark default-color">
-    <a class="navbar-brand" href="#">Navbar</a>
+     <a class="navbar-brand" href="#">
+    <img src="img/ww.png" height="30">
+  </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
     aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -13,14 +18,42 @@
       <li class="nav-item active">
         <a class="nav-link" href="index.php">หน้าหลัก <span class="sr-only">(current)</span></a>
       </li>
-      <?php if(isset($_SESSION["Userlevel"]) <> "M" or isset($_SESSION["Userlevel"]) <> "A"): ?>
+      <?php if(isset($_SESSION["Userlevel"]) <> "M" or isset($_SESSION["Userlevel"]) <> "A"){ ?>
 
-      <li class="nav-item">
-        <a href="" class="nav-link" data-toggle="modal" data-target="#modalLoginForm">เข้าสู่ระบบ/สมัครสมาชิก</a>
-      </li>
+        <li class="nav-item">
+          <a href="" class="nav-link" data-toggle="modal" data-target="#modalLoginForm">เข้าสู่ระบบ/สมัครสมาชิก</a>
+        </li>
+      <?php } ?>
+      <?php if($_SESSION["Userlevel"] == 'A'){ ?>
 
-      <?php elseif(isset($_SESSION["Userlevel"]) == "A"): ?>
-      
+        <!-- Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">ข้อมูลผู้ใช้</a>
+          <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="index.php?sp&user_id=<?php echo($_SESSION["UserID"]); ?>">แก้ไขข้อมูล</a>
+            <a class="dropdown-item" href="index.php?pw&user_id=<?php echo($_SESSION["UserID"]); ?>">เปลี่ยนรหัสผ่าน</a>
+            
+          </div>
+        </li>
+        <li class="nav-item">
+          <a href="index.php?in" class="nav-link">คะแนนผู้ใช้งานทั้งหมด</a>
+
+        </li>
+        <li class="nav-item">
+          <a href="index.php?su"  class="nav-link">จัดการผู้ใช้ </a>
+        </li>
+
+        <li class="nav-item">
+          <a href="index.php?sc"  class="nav-link">จัดการแบบทดสอบ </a>
+        </li>
+
+        <!-- ------------------------------------------------------------------------------------ -->        
+      <?php }elseif($_SESSION["Userlevel"] == 'M'){ ?>
+        <li class="nav-item">
+          <a href="index.php?learning" class="nav-link">ทบเรียน</a>
+        </li>
+
         <!-- Dropdown -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
@@ -28,40 +61,16 @@
           <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" href="index.php?editprofs&user_id=<?php echo($_SESSION["UserID"]); ?>">แก้ไขข้อมูล</a>
             <a class="dropdown-item" href="index.php?editpas&user_id=<?php echo($_SESSION["UserID"]); ?>">เปลี่ยนรหัสผ่าน</a>
-            
+            <a class="dropdown-item" href="index.php?sc&user_id=<?php echo($_SESSION["UserID"]); ?>">คะแนนผู้ใช้งาน</a>
           </div>
         </li>
-        <li class="nav-item">
-          <a href="../index.php?scl" class="nav-link">คะแนนผู้ใช้งานทั้งหมด</a>
-
-        </li>
-        <li class="nav-item">
-          <a href="admin/index.php?su"  class="nav-link">จัดการผู้ใช้ </a>
-        </li>
 
         <li class="nav-item">
-          <a href="admin/index.php?sc"  class="nav-link">จัดการแบบทดสอบ </a>
+          <a href="index.php?scl" class="nav-link">คะแนนผู้ใช้งานทั้งหมด</a>
         </li>
+        
 
-        <?php elseif(isset($_SESSION["Userlevel"]) == "M"): ?>
-          <li class="nav-item">
-            <a href="index.php?learning" class="nav-link">ทบเรียน</a>
-          </li>
-          <!-- Dropdown -->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">ข้อมูลผู้ใช้</a>
-            <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="index.php?editprofs&user_id=<?php echo($_SESSION["UserID"]); ?>">แก้ไขข้อมูล</a>
-              <a class="dropdown-item" href="index.php?editpas&user_id=<?php echo($_SESSION["UserID"]); ?>">เปลี่ยนรหัสผ่าน</a>
-              <a class="dropdown-item" href="index.php?sc&user_id=<?php echo($_SESSION["UserID"]); ?>">คะแนนผู้ใช้งาน</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a href="index.php?scl" class="nav-link">คะแนนผู้ใช้งานทั้งหมด</a>
-          </li>
-
-      <?php endif ?>
+      <?php } ?>
 
     </ul>
   </div>
@@ -73,7 +82,7 @@
       </span>
     </li>
     <li class="nav-item">
-      <a href="../logout.php" class="nav-link orange-text">ออกจากระบบ</a>
+      <a href="logout.php" class="nav-link orange-text">ออกจากระบบ</a>
     </li>
 
   <?php endif ?>
