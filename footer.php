@@ -27,7 +27,7 @@ if ($wa <> '') {
 
   	<!-- Copyright -->
   	<div class="footer-copyright text-center py-3 ">
-  		© 2019 Copyright: RMUTK 
+  		*ผู้ใช้งานต้องทำแบบทดสอบก่อนเรียน ก่อนรับชมวิดีโอ และทำแบบทดสอบหลังเรียนเมื่อชมวิดีโอเสร็จ*
   		
   	</div>
   	<!-- Copyright -->

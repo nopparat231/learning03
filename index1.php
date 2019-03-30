@@ -20,7 +20,7 @@ $totalRows_testing = mysqli_num_rows($testing);
   <div class="py-2">
 
 
-    <h1 class="mb-3 text-center">สื่อการเรียนรู้</h1>
+    <h1 class="mb-3 text-center">บทเรียน</h1>
     <hr>
     <ul class="list-group list-group-flush text-center">
       <?php if ($totalRows_choice > 0) {?>
@@ -41,40 +41,61 @@ $totalRows_testing = mysqli_num_rows($testing);
             <?php if ($result3['user_learning_af'] == 'ยังไม่ทำ'){ ?>
              <li class="list-group">
               <h3>
-<!-- บทสอง -->
-                <a href="index.php?ch&choice_id=<?php echo $row_choice['choice_id'];?>&user_id=<?php echo $_SESSION['UserID'];?>&aff=aff" class="list-group-item list-group-item-action list-group-item-info"><?php echo $row_choice['choice_name']; ?></a>
-              </h3>
-            </li>
+                <!-- บทสอง -->
+                <a href="index.php?ch&choice_id=<?php echo $row_choice['choice_id'];?>&user_id=<?php echo $_SESSION['UserID'];?>&aff=aff" class="list-group-item list-group-item-action list-group-item-info">แบบทดสอบหลังเรียน <br> <?php echo $row_choice['choice_name']; ?></a>
 
-          <?php }else{ ?>
+
+                <center>
+                  <li class="list-group-item"><br> แบบทดสอบมีทั้งหมด 10 ข้อ ข้อละ 1 คะแนน <br> ให้เลือกคำตอบที่ถูกที่สุดเพียงข้อเดียว <br><br>
+                    <a href="index.php?ch&choice_id=<?php echo $row_choice['choice_id'];?>&user_id=<?php echo $_SESSION['UserID'];?>&aff=aff"><img src="img/play.png" width="65"></a>
+                 </li>
+               </center> 
+             </h3>
+
+           <?php }else{ ?>
             <li class="list-group">
               <h3>
-<!-- ทำแล้ว -->
-                <a href="index.php?wa&choice_id=<?php echo $row_choice['choice_id'];?>&user_id=<?php echo $_SESSION['UserID'];?>&aff=aff&cff" class="list-group-item list-group-item-action list-group-item-danger"><?php echo $row_choice['choice_name']; ?></a>
+                <!-- ทำแล้ว -->
+                <a href="index.php?wa&choice_id=<?php echo $row_choice['choice_id'];?>&user_id=<?php echo $_SESSION['UserID'];?>&aff=aff&cff" class="list-group-item list-group-item-action list-group-item-danger ">แบบทดสอบหลังเรียน <br> <?php echo $row_choice['choice_name']; ?></a>
+
+                <center>
+                  <li class="list-group-item"><br> แบบทดสอบมีทั้งหมด 10 ข้อ ข้อละ 1 คะแนน <br> ให้เลือกคำตอบที่ถูกที่สุดเพียงข้อเดียว <br><br>
+                    <a href="index.php?wa&choice_id=<?php echo $row_choice['choice_id'];?>&user_id=<?php echo $_SESSION['UserID'];?>&aff=aff&cff"> <img src="img/play.png" width="65"></a>
+                  </li>
+                </center> 
+              </h3>
+
+              
+
+            <?php  } ?>
+
+
+          <?php }else{?>
+
+           <li class="list-group">
+            <h3>
+              <!-- ยังไม่ทำ -->
+              <a href="index.php?ch&choice_id=<?php echo $row_choice['choice_id'];?>&user_id=<?php echo $_SESSION['UserID'];?>&bff=bff" class="list-group-item list-group-item-action list-group-item-primary ">แบบทดสอบก่อนเรียน <br> <?php echo $row_choice['choice_name']; ?></a>
+              <center>
+                <li class="list-group-item"><br> แบบทดสอบมีทั้งหมด 10 ข้อ ข้อละ 1 คะแนน <br> ให้เลือกคำตอบที่ถูกที่สุดเพียงข้อเดียว <br><br>
+                  <a href="index.php?ch&choice_id=<?php echo $row_choice['choice_id'];?>&user_id=<?php echo $_SESSION['UserID'];?>&bff=bff" >
+                    <img src="img/play.png" width="65"></a>
+                  </li>
+
+
+                </center>
               </h3>
             </li>
+          <?php } ?>
 
-          <?php  } ?>
+          <hr>
 
+        <?php } while ($row_choice = mysqli_fetch_assoc($choice)); ?>
+      <?php }
+      mysqli_free_result($choice);
+      ?>
 
-        <?php }else{?>
-
-         <li class="list-group">
-          <h3>
-<!-- ยังไม่ทำ -->
-            <a href="index.php?ch&choice_id=<?php echo $row_choice['choice_id'];?>&user_id=<?php echo $_SESSION['UserID'];?>&bff=bff" class="list-group-item list-group-item-action list-group-item-primary"><?php echo $row_choice['choice_name']; ?></a>
-          </h3>
-        </li>
-      <?php } ?>
-
-      <hr>
-
-    <?php } while ($row_choice = mysqli_fetch_assoc($choice)); ?>
-  <?php }
-  mysqli_free_result($choice);
-  ?>
-
-</ul>
-</div>
+    </ul>
+  </div>
 </div>
 

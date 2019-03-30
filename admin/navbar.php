@@ -51,7 +51,7 @@ ini_set('display_errors', 0);
         <!-- ------------------------------------------------------------------------------------ -->        
       <?php }elseif($_SESSION["Userlevel"] == 'M'){ ?>
         <li class="nav-item">
-          <a href="index.php?learning" class="nav-link">ทบเรียน</a>
+          <a href="index.php?learning" class="nav-link">บทเรียน</a>
         </li>
 
         <!-- Dropdown -->

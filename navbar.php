@@ -30,7 +30,7 @@
 
         <?php else: ?>
           <li class="nav-item">
-            <a href="index.php?learning" class="nav-link">ทบเรียน</a>
+            <a href="index.php?learning" class="nav-link">บทเรียน</a>
           </li>
           <!-- Dropdown -->
           <li class="nav-item dropdown">

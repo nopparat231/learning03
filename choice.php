@@ -71,7 +71,7 @@ include 'conn.php';
 $choice_id = $_GET['choice_id'];
 $user_id = $_GET['user_id'];
 
-$sql="SELECT * From testing WHERE choice_id = $choice_id order by rand() limit 21";
+$sql="SELECT * From testing WHERE choice_id = $choice_id order by rand() limit 11";
 $db_query=mysqli_query($con,$sql) or die(mysqli_error());
 $result=mysqli_fetch_array($db_query);
 
