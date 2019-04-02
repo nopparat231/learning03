@@ -1,4 +1,4 @@
-               
+                       
 
 <?php 
 date_default_timezone_set('Asia/Bangkok');
@@ -21,7 +21,7 @@ $totalRows_user = mysqli_num_rows($user);
     </div>
   </div>
 </div>
-<div class="py-1">
+<div class="py-3">
 
   <form class="" id="c_form-h" action="edit_user_db.php" method="post" >
     <div class="form-group row"><label class="col-2 col-form-label">ชื่อผู้ใช้<br></label>
@@ -59,7 +59,7 @@ $totalRows_user = mysqli_num_rows($user);
   <label class="col-2">วันหมดอายุ<br></label>
   <div class="col-9">
     <?php $d = date("Y-m-d"); ?>
-    
+
     <input type="date" name="user_date" min="<?php echo $d; ?>" value="<?php echo date('Y-m-d',strtotime($row_user['user_date'])) ?>" />
 
   </div>
@@ -102,5 +102,12 @@ if ($row_user['Userlevel'] == 'A' ){
   </div>
 </div>
 </form>
+</div>
+<div class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12"></div>
+    </div>
+  </div>
 </div>
 </div>
