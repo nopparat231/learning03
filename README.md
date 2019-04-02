@@ -1,3 +1,3 @@
 # learning กลุ่มที่3
 โปรเจคจบ สื่อการเรียนรู้
-http://medialearning.ga/
+http://disaster.sharelearningmedia.com
