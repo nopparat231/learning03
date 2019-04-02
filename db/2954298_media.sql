@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.6.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Mar 28, 2019 at 02:53 PM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 5.6.40
+-- Host: fdb25.runhosting.com
+-- Generation Time: Apr 01, 2019 at 12:01 PM
+-- Server version: 5.7.20-log
+-- PHP Version: 5.5.38
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -19,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `learning02`
+-- Database: `2954298_media`
 --
 
 -- --------------------------------------------------------
@@ -41,7 +39,7 @@ CREATE TABLE `choice` (
 --
 
 INSERT INTO `choice` (`choice_id`, `choice_name`, `video`, `choice_detail`, `choice_status`) VALUES
-(1, 'แขนกล คนนอนดึก', 'https://www.youtube.com/watch?v=HnPOLQvMm0E', 'จะทดสอบ รายละเอียดจะ', 0);
+(1, 'LITTLE BIG - LollyBomb ', 'https://www.youtube.com/watch?v=FBnAZnfNB6U', 'จะทดสอบ รายละเอียดจะ', 0);
 
 -- --------------------------------------------------------
 
@@ -124,8 +122,16 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`ID`, `Username`, `Password`, `Firstname`, `Lastname`, `email`, `phone`, `Userlevel`, `user_date`, `session_id`, `Status`) VALUES
-(44, 'admin', 'Aa123456', 'GGMM', 'GGMM', 'admin@gmail.com', '8888888888', 'A', '2020-03-31', 'fdc1e278676cd8877f58ab2b0c3dc5c6', 'Y'),
-(47, 'user', 'Aa123456', 'User', 'User', 'User@gmail.com', '8888888888', 'M', '2020-03-31', 'fdc1e278676cd8877f58ab2b0c3dc5c6', 'Y');
+(44, 'admin', 'Aa123456', 'admin', 'admin', 'admin@gmail.com', '8888888888', 'A', '2020-03-31', 'fdc1e278676cd8877f58ab2b0c3dc5c6', 'Y'),
+(47, 'user', 'Aa123456', 'User', 'User', 'User@gmail.com', '8888888888', 'M', '2020-03-31', 'fdc1e278676cd8877f58ab2b0c3dc5c6', 'Y'),
+(50, 'test', 'Aa123456', 'asddd', 'asddd', '23.noop@gmail.com', '3545345454', 'M', '2021-03-28', 'ac3dba2171e1fc3d2504903a71aeb25f', 'Y'),
+(51, 'ink', 'Ink0886259777', 'อทิติ', 'ขาวสอาดธนาภา', 'atitiink12@gmail.com', '0886259766', 'M', '2021-03-29', '3fb90d07f630d1a26e7ccb5050a39390', 'Y'),
+(52, 'ice', 'Ice12345678', 'mvxm', 'gfhs', 'atitiink12@gmai.com', '0614645887', 'M', '2021-03-30', 'd91de1aed96a4047f79995f864cda605', 'N'),
+(53, 'Mook', 'Mook26012538', 'ชไมพร', 'ชูเมฆา', 'kannika9953@gmail.com', '0864257942', 'M', '2021-03-30', 'eeb5ab0d70fbff69a2a5587a7e27b87e', 'Y'),
+(54, 'Siri', 'Aa123456', 'สิริลักษมี', 'ยาวะโนภาส', 'skunkkik192022@hotmail.com', '0992016685', 'M', '2021-03-30', '738c505cdecc0e8e4b1ef9c1e1809b6a', 'N'),
+(55, 'AAAA', 'Abc12102538', 'กนกวรรณ', 'แก้วเกิด', 'kannika@gmail.com', '0897286431', 'M', '2021-03-30', 'eeb5ab0d70fbff69a2a5587a7e27b87e', 'N'),
+(56, 'Ooil', 'Ooil123456789', 'ภัทราพร', 'ทองเกตุ', 'pattarapornthonket@gmail.co', '0930124286', 'M', '2021-03-30', '88bf2ba84c28ff3b789d669e6e31d59f', 'N'),
+(57, 'Sai', 'Sai121212', 'พรทิพ', 'ใจดี', 'chamaiporn8558@gmail.com', '0873818558', 'M', '2021-03-30', 'e653ddc95c3eb84f34eb70112ffaca0c', 'N');
 
 -- --------------------------------------------------------
 
@@ -141,6 +147,16 @@ CREATE TABLE `user_learning` (
   `user_learning_af` varchar(20) NOT NULL,
   `user_learning_status` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `user_learning`
+--
+
+INSERT INTO `user_learning` (`user_learning_id`, `choice_id`, `user_id`, `user_learning_bf`, `user_learning_af`, `user_learning_status`) VALUES
+(43, 1, 50, 7, '7', 0),
+(44, 1, 51, 3, '2', 0),
+(45, 1, 47, 5, '1', 0),
+(46, 1, 53, 9, '4', 0);
 
 --
 -- Indexes for dumped tables
@@ -179,26 +195,21 @@ ALTER TABLE `user_learning`
 --
 ALTER TABLE `choice`
   MODIFY `choice_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `testing`
 --
 ALTER TABLE `testing`
   MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
-
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `ID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
-
+  MODIFY `ID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 --
 -- AUTO_INCREMENT for table `user_learning`
 --
 ALTER TABLE `user_learning`
-  MODIFY `user_learning_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
-COMMIT;
-
+  MODIFY `user_learning_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

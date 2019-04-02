@@ -78,7 +78,7 @@ if ($numemail > 0 ){ ?>
 
 			$result1 = mysqli_query($con, $sql) or die ("Error in query: $sql " . mysqli_error());
 			$ID = mysqli_insert_id($con) or die ("Error in query: $sql " . mysqli_error());
-			$ma = "http://medialearning.ga/register_db_active.php?sid=".$session_id."&ID=".$ID."<br>";
+			$ma = "http://disaster.sharelearningmedia.com/register_db_active.php?sid=".$session_id."&ID=".$ID."<br>";
      $massage = "<h3> กรุณากดลิ้งค์ เพื่อยืนยันการสมัคร </h3><br>".$ma;
    }
 	//ปิดการเชื่อมต่อ database
@@ -90,9 +90,9 @@ if ($numemail > 0 ){ ?>
 
      ini_set( 'display_errors', 1 );
      error_reporting( E_ALL );
-     $from = "sharelea@sharelearningmedia.com";
+     $from = "service@disaster.sharelearningmedia.com";
      $to = $email;
-     $subject = "ยืนยันการสมัครสมาชิกดเว็บ sharelearningmedia.com";
+     $subject = "ยืนยันการสมัครสมาชิกดเว็บ disaster.sharelearningmedia.com";
      $message = $massage;
      $headers = "From:" . $from . "\r\n";
      $headers .= "Content-Type: text/html; charset=utf-8\r\n";
