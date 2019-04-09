@@ -4,21 +4,27 @@
 <?php
 
 
+for ($i=1; $i < 21; $i++) { 
 
 
-for ($i=1; $i < 20; $i++) { 
-  $a = 1;
 
-  while($result=mysqli_fetch_array($db_query))
+  $id = $_REQUEST["id$i"];
+
+
+  $sqla="SELECT * From testing WHERE id =".$id;
+  $db_querya=mysqli_query($con,$sqla) or die(mysqli_error());
+  //$resulta=mysqli_fetch_array($db_querya);
+
+  while($resulta=mysqli_fetch_array($db_querya))
   {
 
-    $an = $_REQUEST["answer$a"];
+    $an = $_REQUEST["answer$i"];
     $cn = $_REQUEST["c$i"];
 
-    echo "<h3>" . $a . " )  ".$result['question']."</h3>";
+    echo "<h3>" . $i . " )  ".$resulta['question']."</h3>";
 
 
-    $cnn = $result["c$cn"];
+    $cnn = $resulta["c$cn"];
 
     ?>
 
@@ -35,7 +41,7 @@ for ($i=1; $i < 20; $i++) {
     }
     echo "<hr>";
 
-    $a++;
+   
   }
 
 }
