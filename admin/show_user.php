@@ -43,6 +43,7 @@ $totalRows_user = mysqli_num_rows($user);
 									<th scope="col">ประเภท</th>
 
 									<th scope="col" width="5">แก้ไข</th>
+									<th scope="col" width="5">ยกเลิก</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -78,31 +79,42 @@ $totalRows_user = mysqli_num_rows($user);
 											<a href="index.php?eu&user_id=<?php echo $row_user['ID'];?>" class="btn btn-outline-warning my-2 my-sm-0" ><img src="../img/edit.png" width="20"></a>
 										</td>
 
-									</tr>
+										
+										<?php if ($row_user['Userlevel'] <> 'E' ): ?>
+											<td>
+												<a href="del_user.php?User_id=<?php echo $row_user['ID'];?>&Userlevel=E" class="btn btn-outline-danger my-2 my-sm-0" onClick="return confirm('ยืนยันการยกเลิกผู้ใช้');">ยกเลิก</a>
+											</td>
+											<?php else: ?>
+												<td>
+													<a href="del_user.php?User_id=<?php echo $row_user['ID'];?>&Userlevel=M" class="btn btn-outline-info my-2 my-sm-0" onClick="return confirm('ยืนยันการใช้งานผู้ใช้');">ใช้งาน</a>
+												</td>
+											<?php endif ?>
 
-									<?php 
-									$i += 1;
-								} while ($row_user = mysqli_fetch_assoc($user)); ?>
+										</tr>
 
-							</tbody>
-						</table>
-					<?php }else {
-						echo "<h3> ยังไม่มีคะแนน </h3>";
-					}
+										<?php 
+										$i += 1;
+									} while ($row_user = mysqli_fetch_assoc($user)); ?>
 
-					mysqli_free_result($user);?>
+								</tbody>
+							</table>
+						<?php }else {
+							echo "<h3> ยังไม่มีคะแนน </h3>";
+						}
 
-					
+						mysqli_free_result($user);?>
+
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="py-5">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12"></div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="py-5">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12"></div>
-			</div>
-		</div>
-	</div>
-</div>
 
