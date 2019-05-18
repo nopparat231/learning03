@@ -139,6 +139,7 @@ if(session_status() == PHP_SESSION_NONE){
   <script type="text/javascript">
     $(document).ready( function () {
       $('#dtBasicExample').DataTable({
+        "lengthMenu": [[15, 25, 50, -1], [15, 25, 50, "ทั้งหมด"]],
         "oLanguage": {
           "sEmptyTable":     "ไม่มีข้อมูลในตาราง",
           "sInfo":           "แสดง _START_ ถึง _END_ จาก _TOTAL_ แถว",
